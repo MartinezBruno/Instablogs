@@ -1,0 +1,20 @@
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+    scale: 25%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+.blogGridCard {
+  view-timeline-name: --revealing-card;
+
+  animation-name: show;
+  animation-fill-mode: both;
+  animation-timeline: --revealing-card;
+  animation-range: entry 25% cover 50%;
+}
