@@ -1,6 +1,6 @@
 const Information = ({ article }) => {
   return (
-    <section className='c-container mt-28 flex lg:flex-row self-end flex-col max-w-[442px] md:max-w-[650px] lg:max-w-none lg:gap-28 scroll-mt-[104px]'>
+    <section className='c-container !pt-36 flex lg:flex-row self-end flex-col max-w-[442px] md:max-w-[650px] lg:max-w-none lg:gap-28 scroll-mt-[104px]'>
       <img
         src={article.image}
         alt='Article cover image'

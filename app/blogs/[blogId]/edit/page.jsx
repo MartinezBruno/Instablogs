@@ -16,7 +16,7 @@ const BlogEdit = async ({ params }) => {
   const blogDetail = await getBlogDetail(blogId)
 
   return (
-    <article className='c-container mt-28 flex flex-col items-center'>
+    <article className='c-container !pt-36 flex flex-col items-center'>
       <BlogEditForm blog={blogDetail} />
     </article>
   )

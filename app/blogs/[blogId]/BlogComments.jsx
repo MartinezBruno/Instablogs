@@ -29,8 +29,8 @@ const BlogComments = async ({ blogId }) => {
               return (
                 <figure
                   key={comment.id}
-                  className='flex flex-col items-start justify-center p-8 text-center bg-white border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg'>
-                  <blockquote className='mb-4 text-gray-500 lg:mb-8'>
+                  className='flex flex-col items-start justify-center p-8 text-center bg-white dark:bg-[#000000EB] border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg'>
+                  <blockquote className='mb-4 text-gray-500 dark:text-white lg:mb-8'>
                     <p
                       className='my-4 text-start w-full'
                       style={{ wordBreak: 'break-word' }}
@@ -50,13 +50,13 @@ const BlogComments = async ({ blogId }) => {
                           <p>
                             {comment.author.fullname ?? 'Unknown author'}
                           </p>
-                          <span className='text-sm text-gray-500'>
+                          <span className='text-sm text-gray-500 dark:text-white'>
                             {comment.author.position ?? ''}
                           </span>
                         </div>
                       </div>
                     </Link>
-                    <span className='text-gray-500 flex items-center justify-center'>
+                    <span className='text-gray-500 dark:text-white flex items-center justify-center'>
                       {new Date(comment.createdAt).toDateString()}
                     </span>
                   </figcaption>

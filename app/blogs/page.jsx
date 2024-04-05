@@ -17,7 +17,7 @@ const getBlogs = async () => {
 const BlogsPage = async () => {
   const blogs = await getBlogs()
   return (
-    <section className='c-container mt-28'>
+    <section className='c-container !pt-36'>
       <h2 className='text-5xl font-bold px-5'>Blogs</h2>
       {blogs.length > 0
         ? (

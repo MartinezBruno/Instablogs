@@ -29,7 +29,12 @@ const Nav = () => {
   }
 
   useEffect(() => {
-    const color = pathname === '/' ? '#fff' : '#000'
+    const theme = window.localStorage.getItem('theme')
+    let color = ''
+
+    if (theme === 'dark') color = '#fff'
+    else color = pathname === '/' ? '#fff' : '#000'
+
     setSvgFillColor(color)
   }, [pathname])
 
@@ -106,7 +111,7 @@ const Nav = () => {
                   onClick={() => setToggleDropdown(prev => !prev)}
                 />
                 {toggleDropdown && (
-                  <div className='absolute right-4 top-5 border border-gray-500 bg-white flex flex-col items-center'>
+                  <div className='absolute right-4 top-5 border border-gray-500 bg-white dark:bg-[#000000EB] flex flex-col items-center'>
                     <Link
                       href={`/profile/${session?.user.username}`}
                       className='dropdown_link'

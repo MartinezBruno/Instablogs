@@ -32,11 +32,11 @@ const BlogDetail = async ({ blogId }) => {
             alt='user photo'
             className='rounded-full'
           />
-          <span className='text-text_gray text-sm font-semibold'>
+          <span className='text-text_gray dark:bg-white text-sm font-semibold'>
             {blogDetail.authorName} |{' '}
           </span>
         </Link>
-        <span className='text-text_gray text-sm font-semibold'>
+        <span className='text-text_gray dark:bg-white text-sm font-semibold'>
           {new Date(blogDetail.createdAt).toDateString()}
         </span>
       </div>
@@ -50,7 +50,7 @@ const BlogDetail = async ({ blogId }) => {
       /> */}
       <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28 mt-7'>
         <p
-          className='text-text_gray md:text-lg lg:text-xl leading-[130%] break-words'
+          className='text-text_gray md:text-lg lg:text-xl leading-[130%] break-words dark:text-white'
           dangerouslySetInnerHTML={{
             __html: JSON.parse(formattedContent)
           }}></p>
@@ -68,7 +68,7 @@ const BlogDetail = async ({ blogId }) => {
           <span className='text-[#BBC8C4] font-bold tracking-[1.6px] uppercase text-base'>
             Written By
           </span>
-          <span className='text-[#25313C] text-sm md:text-2xl font-normal'>
+          <span className='text-[#25313C] dark:text-white text-sm md:text-2xl font-normal'>
             {blogDetail.authorName}
           </span>
           <span>{blogDetail.authorPos}</span>

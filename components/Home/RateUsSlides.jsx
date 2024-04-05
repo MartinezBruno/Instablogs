@@ -67,10 +67,10 @@ const RateUsSlides = ({ reviews }) => {
         </SwiperSlide>
       ))}
       <div className='flex justify-end mt-4 mr-8'>
-        <span className='swiper-button-prev cursor-pointer'>
+        <span className='swiper-button-prev cursor-pointer !static'>
           <ArrowLeft />
         </span>
-        <span className='swiper-button-next cursor-pointer'>
+        <span className='swiper-button-next cursor-pointer !static'>
           <ArrowRight />
         </span>
       </div>

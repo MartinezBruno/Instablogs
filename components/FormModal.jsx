@@ -2,13 +2,13 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
   return (
     <div
       id='authentication-modal'
-      className='fixed inset-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full bg-transparent/25 flex justify-center items-center'>
+      className='fixed inset-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full bg-transparent/25 dark:bg-transparent/40 flex justify-center items-center'>
       <div className="fixed inset-0 content-[' ']" onClick={closeModal}></div>
       <div className='relative w-full max-w-md max-h-full'>
-        <div className='relative bg-white rounded-lg shadow'>
+        <div className='relative bg-white rounded-lg shadow dark:bg-[#000000]'>
           <button
             type='button'
-            className='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center'
+            className='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 dark:hover:bg-red-600 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center'
             onClick={closeModal}>
             <svg
               className='w-3 h-3'
@@ -27,14 +27,14 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
             <span className='sr-only'>Close modal</span>
           </button>
           <div className='px-6 py-6 lg:px-8'>
-            <h3 className='mb-4 text-xl font-medium text-gray-900'>
+            <h3 className='mb-4 text-xl font-medium text-gray-900 dark:text-white'>
               Edit your profile
             </h3>
             <form className='space-y-6' onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor='fullname'
-                  className='block mb-2 text-sm font-medium text-gray-900'>
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                   Name
                 </label>
                 <input
@@ -50,7 +50,7 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
               <div>
                 <label
                   htmlFor='biography'
-                  className='block mb-2 text-sm font-medium text-gray-900'>
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                   Bio
                 </label>
                 <input
@@ -66,7 +66,7 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
               <div>
                 <label
                   htmlFor='position'
-                  className='block mb-2 text-sm font-medium text-gray-900'>
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
                   Position
                 </label>
                 <input
@@ -81,7 +81,7 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
               </div>
               <button
                 type='submit'
-                className='w-full text-white bg-yellow hover:brightness-75 transition-all ease-in-out focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
+                className='w-full text-white bg-yellow dark:bg-purple hover:brightness-75 transition-all ease-in-out focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
                 Edit your profile info
               </button>
             </form>

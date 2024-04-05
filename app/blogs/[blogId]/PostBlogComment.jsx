@@ -109,7 +109,7 @@ const PostBlogComment = ({ blogId }) => {
               alt={session?.user.name}
             />
             <div className='flex flex-col items-start w-full gap-2'>
-              <textarea onChange={handleCommentChange} value={comment} name="comment" id="comment" placeholder='Comment' className='border-[2px] h-[93px] lg:h-[195px] w-full p-4'></textarea>
+              <textarea onChange={handleCommentChange} value={comment} name="comment" id="comment" placeholder='Comment' className='border-[2px] h-[93px] lg:h-[195px] w-full p-4 dark:bg-[#000000EB]'></textarea>
               <span>{charsLeft} / {limitChars}</span>
               <p className={`${message.alertStyles}`}>{message.text}</p>
               <button

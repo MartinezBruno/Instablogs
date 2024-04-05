@@ -32,7 +32,7 @@ const HorizontalDots = ({ blogId }) => {
         />
       </svg>
       {showMenu && (
-        <div className='absolute right-6 top-9 bg-white flex flex-col'>
+        <div className='absolute right-6 top-9 bg-white dark:bg-[#000000EB] flex flex-col'>
           <span className='dropdown_link cursor-pointer' onClick={handleEdit}>Edit</span>
           <span className='dropdown_link cursor-pointer' onClick={handleDelete}>Delete</span>
         </div>

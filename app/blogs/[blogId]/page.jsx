@@ -5,7 +5,7 @@ import PostBlogComment from './PostBlogComment'
 const page = async ({ params }) => {
   const { blogId } = params
   return (
-    <section className='c-container mt-28'>
+    <section className='c-container !pt-36'>
       <BlogDetail blogId={blogId} />
       <BlogComments blogId={blogId} />
       <PostBlogComment blogId={blogId} />

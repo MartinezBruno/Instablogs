@@ -16,8 +16,8 @@ const Hero = () => {
       </div>
       <div className='c-container relative'>
         <div className='flex flex-col gap-8 max-w-[515px] mx-auto md:mx-0 mt-28'>
-          <h1 className='heading1 text-white break-words'>Instant collaboration for remote teams</h1>
-          <p className='paragraph text-white'>
+          <h1 className='heading1 !text-white break-words'>Instant collaboration for remote teams</h1>
+          <p className='paragraph !text-white'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
             nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

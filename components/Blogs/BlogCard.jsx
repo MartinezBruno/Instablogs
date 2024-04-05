@@ -9,7 +9,7 @@ const BlogCard = ({ blog, userId }) => {
   console.log(session?.user?.id, userId)
 
   return (
-    <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'>
+    <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#000000] dark:shadow-[0px_4px_30px_0px_#00000040]'>
       {session?.user?.id === userId && userId !== undefined && (
         <HorizontalDots blogId={blog.id} />
       )}
@@ -40,7 +40,7 @@ const BlogCard = ({ blog, userId }) => {
             alt='user photo'
             className='rounded-full'
           />
-          <span className='text-text_gray text-sm font-semibold'>
+          <span className='text-text_gray dark:text-white text-sm font-semibold'>
             {blog.authorName ?? 'Unknown author'}{' '}
             <span className=' hidden md:inline-block'>
               {' '}
