@@ -9,7 +9,6 @@ import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { ThemeProvider } from '@/components/Static/ThemeProvider'
 
 const muslish = Mulish({
   weight: ['400', '600', '700', '800'],
@@ -39,14 +38,10 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={`h-screen ${muslish.className}`}>
         <Provider>
-          <ThemeProvider attribute='class' defaultTheme='system'>
-            <Nav />
-            <main className='dark:bg-[rgba(0,0,0,0.52)]'>
-              {children}
-            </main>
-            <SpeedInsights />
-            <Footer />
-          </ThemeProvider>
+          <Nav />
+          <main className='dark:bg-[rgba(0,0,0,0.52)]'>{children}</main>
+          <SpeedInsights />
+          <Footer />
         </Provider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './Footer.module.css'
-import { ThemeSwitcher } from './ThemeSwitcher'
+import ThemeToggle from '../Theme.util'
 
 const companyLinks = [
   {
@@ -35,7 +35,7 @@ const contactUsData = [
 const Footer = () => {
   return (
     <footer className='bg-yellow dark:bg-purple'>
-      <div className='c-container flex flex-col flex-wrap lg:flex-row gap-6'>
+      <div className='flex flex-col flex-wrap gap-6 c-container lg:flex-row'>
         <div className={`pb-12 gap-4 ${styles.column_container}`}>
           <Link href='/' title='Instablogs' className='basis-[20%]'>
             <svg
@@ -110,11 +110,11 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div className='flex justify-between items-center w-full'>
+        <div className='flex items-center justify-between w-full'>
           <span className='text-white text-sm leading-4 flex-[1_0_50%]'>
             Designed and Developed by Martina and Bruno with a lot of ☕ and ❤️
           </span>
-          <ThemeSwitcher />
+          <ThemeToggle />
         </div>
       </div>
     </footer>
