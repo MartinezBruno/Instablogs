@@ -18,13 +18,17 @@ const BlogDetail = async ({ blogId }) => {
   )
   return (
     <article className='flex flex-col items-center' id='blog_article'>
-      <h1 className='font-extrabold text-2xl md:text-5xl text-center' style={{ textWrap: 'balance' }}>
+      <h1
+        className='font-extrabold text-2xl md:text-5xl text-center'
+        style={{ textWrap: 'balance' }}
+      >
         {blogDetail.title}
       </h1>
       <div className='flex justify-start items-center gap-2 my-3'>
         <Link
           href={`/profile/${blogDetail.authorUsername}`}
-          className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'>
+          className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'
+        >
           <img
             src={blogDetail.authorPic}
             width={40}
@@ -32,15 +36,15 @@ const BlogDetail = async ({ blogId }) => {
             alt='user photo'
             className='rounded-full'
           />
-          <span className='text-text_gray dark:bg-white text-sm font-semibold'>
+          <span className='text-text_gray text-sm font-semibold'>
             {blogDetail.authorName} |{' '}
           </span>
         </Link>
-        <span className='text-text_gray dark:bg-white text-sm font-semibold'>
+        <span className='text-text_gray text-sm font-semibold'>
           {new Date(blogDetail.createdAt).toDateString()}
         </span>
       </div>
-        <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
+      <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
       {/* <img
         src={blogDetail.banner}
         width={1920}
@@ -53,7 +57,8 @@ const BlogDetail = async ({ blogId }) => {
           className='text-text_gray md:text-lg lg:text-xl leading-[130%] break-words dark:text-white'
           dangerouslySetInnerHTML={{
             __html: JSON.parse(formattedContent)
-          }}></p>
+          }}
+        ></p>
         <hr className='my-5 mx-7' />
       </div>
       <div className='flex gap-4'>
