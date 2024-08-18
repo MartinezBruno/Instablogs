@@ -67,7 +67,7 @@ const BlogEditForm = ({ blog }) => {
   return (
     <>
       <input
-        className='font-extrabold text-2xl md:text-5xl text-center mx-auto dark:bg-[rgb(59,59,59)]'
+        className='font-extrabold text-2xl md:text-5xl text-center mx-auto bg-transparent'
         style={{ textWrap: 'balance' }}
         contentEditable
         name='blogTitle'
@@ -79,7 +79,7 @@ const BlogEditForm = ({ blog }) => {
         <textarea
           name='blogContent'
           defaultValue={blogData.blogContent}
-          className='text-text_gray dark:text-white md:text-lg lg:text-xl leading-[130%] break-words w-full min-h-[600px]'
+          className='text-text_gray dark:text-white md:text-lg lg:text-xl leading-[130%] break-words w-full bg-transparent'
           onChange={handleChange}
         ></textarea>
       </div>

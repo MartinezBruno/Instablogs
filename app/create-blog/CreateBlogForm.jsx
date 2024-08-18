@@ -52,7 +52,7 @@ const CreateBlogForm = ({ user }) => {
       if (file.size / 1000 / 1000 < 10) {
         return new Compressor(file, {
           quality: 0.6,
-          success (result) {
+          success(result) {
             console.log('Optimized image', result.size / 1000 / 1000 + 'MB')
             const imageUrl = URL?.createObjectURL(result)
             setErrors({ ...errors, banner: false })
@@ -68,20 +68,20 @@ const CreateBlogForm = ({ user }) => {
   const handleOnChange = (e) => {
     const { name, value } = e.target
     setBlog({ ...blog, [name]: value })
-    if (name === 'content') handleHeight(e)
+    // if (name === 'content') handleHeight(e)
   }
 
-  const handleHeight = (e) => {
-    if (e.target.value === '') e.target.style.height = '0px'
-    else e.target.style.height = `${e.target.scrollHeight - 20}px`
-  }
+  // const handleHeight = (e) => {
+  //   if (e.target.value === '') e.target.style.height = '0px'
+  //   else e.target.style.height = `${e.target.scrollHeight - 20}px`
+  // }
 
-  const handleFocus = (e) => {
-    handleHeight(e)
-    e.target.onblur = () => {
-      e.target.style.height = '0px'
-    }
-  }
+  // const handleFocus = (e) => {
+  //   handleHeight(e)
+  //   e.target.onblur = () => {
+  //     e.target.style.height = '0px'
+  //   }
+  // }
 
   const handleErrors = (blog) => {
     const errors = {}
@@ -99,9 +99,14 @@ const CreateBlogForm = ({ user }) => {
     const errors = handleErrors(blog)
     if (!errors) return setLoading(false)
 
-    const imageUrl = await uploadImageAndGetURL({ file: blog.banner, userId: user.id })
+    const imageUrl = await uploadImageAndGetURL({
+      file: blog.banner,
+      userId: user.id
+    })
     if (!imageUrl) {
-      alert('Something went wrong while uploading your image, try again or contact us')
+      alert(
+        'Something went wrong while uploading your image, try again or contact us'
+      )
       return setLoading(false)
     }
     setBlog({ ...blog, banner: imageUrl })
@@ -165,7 +170,9 @@ const CreateBlogForm = ({ user }) => {
             Recomended size: 1920x1080px - Max weight: 10MB
           </span>
           {errors.banner && (
-            <span className='text-red-500 block text-sm'>Your image should not weight more than 10MB</span>
+            <span className='text-red-500 block text-sm'>
+              Your image should not weight more than 10MB
+            </span>
           )}
         </div>
         <div>
@@ -176,7 +183,8 @@ const CreateBlogForm = ({ user }) => {
             className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500 dark:bg-black'
             onChange={handleOnChange}
             value={blog.content}
-            onFocus={handleFocus}></textarea>
+            // onFocus={handleFocus}
+          ></textarea>
           {errors.content && (
             <span className='text-red-500'>{errors.content}</span>
           )}
@@ -184,17 +192,16 @@ const CreateBlogForm = ({ user }) => {
         <button
           disabled={loading}
           type='submit'
-          className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'>
-          {loading
-            ? (
-                <span>
-                  Posting...
-                  <Spinner />
-                </span>
-              )
-            : (
-                'Post your blog!'
-              )}
+          className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'
+        >
+          {loading ? (
+            <span>
+              Posting...
+              <Spinner />
+            </span>
+          ) : (
+            'Post your blog!'
+          )}
         </button>
       </div>
     </form>

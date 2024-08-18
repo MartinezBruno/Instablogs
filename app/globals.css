@@ -38,6 +38,10 @@ input {
   @apply bg-white placeholder:dark:text-purple dark:border-none;
 }
 
+textarea {
+  field-sizing: content;
+}
+
 .heading1 {
   @apply text-5xl font-extrabold leading-[normal] text-black dark:text-white;
 }
