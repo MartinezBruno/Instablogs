@@ -22,17 +22,17 @@ const BlogCard = ({ blog, userId }) => {
               height={400}
               loading='lazy'
               alt={blog.title}
-              className='w-full h-full object-cover object-center blog-img aspect-square'
+              className='object-cover object-center w-full h-full blog-img aspect-square'
             />
           </div>
         </Link>
       )}
       <div className='p-5'>
-        <h2 className='text-xl lg:text-2xl h-[2.6em] truncate whitespace-normal sm:whitespace-nowrap mb-2'>
+        <h2 className='text-xl lg:text-2xl h-[2.6em] truncate whitespace-normal sm:whitespace-nowrap mb-2 dark:text-white'>
           {blog.title}
         </h2>
-        <p className={styles.blog_content}>{blog.content}</p>
-        <div className='flex justify-start items-center gap-2 mt-11'>
+        <p className={`${styles.blog_content} dark:text-white`}>{blog.content}</p>
+        <div className='flex items-center justify-start gap-2 mt-11'>
           <img
             src={blog.authorImage ?? 'https://via.placeholder.com/150'}
             width={40}
@@ -40,9 +40,9 @@ const BlogCard = ({ blog, userId }) => {
             alt='user photo'
             className='rounded-full'
           />
-          <span className='text-text_gray dark:text-white text-sm font-semibold'>
+          <span className='text-sm font-semibold text-text_gray dark:text-white'>
             {blog.authorName ?? 'Unknown author'}{' '}
-            <span className=' hidden md:inline-block'>
+            <span className='hidden md:inline-block'>
               {' '}
               | {new Date(blog.createdAt).toDateString()}
             </span>

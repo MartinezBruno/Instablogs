@@ -2,60 +2,36 @@
 
 import { useState, useEffect } from 'react'
 
-import Script from 'next/script'
-
 import './ThemeSwitch.css'
 
 export default function SetTheme() {
-  const [theme, setTheme] = useState()
+  const [darkTheme, setDarkTheme] = useState(false)
 
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark')
-    } else {
-      setTheme('light')
-    }
-  }
+    const theme = darkTheme ? 'light' : 'dark'
+    localStorage.setItem('theme', theme)
+    setDarkTheme(!darkTheme)
 
-  const maybeTheme = () => {
-    const themeLocalStorage = localStorage.getItem('theme')
-    const themeSystem = window.matchMedia('(prefers-color-scheme: dark)')
-      .matches
-      ? 'dark'
-      : 'light'
-
-    return themeLocalStorage ?? themeSystem
+    if (theme === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
   }
 
   useEffect(() => {
-    document.querySelector(':root').dataset.theme = theme ?? maybeTheme()
-    localStorage.setItem('theme', theme ?? maybeTheme())
-    setTheme(theme ?? maybeTheme())
+    let savedMode = localStorage.getItem('theme')
 
-    const useSetTheme = (e) => {
-      setTheme(e.matches ? 'dark' : 'light')
+    if (!savedMode) {
+      savedMode = 'light'
+      setDarkTheme(false)
+      localStorage.setItem('theme', savedMode)
     }
 
-    const watchSysTheme = window.matchMedia('(prefers-color-scheme: dark)')
-
-    watchSysTheme.addEventListener('change', useSetTheme)
-
-    return () => {
-      watchSysTheme.removeEventListener('change', useSetTheme)
-    }
-  }, [theme])
+    if (savedMode === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+    setDarkTheme(savedMode === 'dark')
+  }, [])
 
   return (
     <>
-      <Script id='theme.util.jsx' strategy='beforeInteractive'>
-        {`
-          let themeLocalStorage = localStorage.getItem('theme')
-          let themeSystem       = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-
-          document.querySelector(':root').dataset.theme = themeLocalStorage ?? themeSystem
-        `}
-      </Script>
-      {/* <button>{buttonIcon(theme)}</button> */}
       <label htmlFor='theme' className='theme'>
         <span className='theme__toggle-wrap'>
           <input
@@ -66,8 +42,8 @@ export default function SetTheme() {
             type='checkbox'
             role='switch'
             name='theme'
-            value={theme === 'dark' ? 'dark' : 'light'} // Set value based on current theme
-            checked={theme === 'dark'} // Set checked based on current theme
+            value={darkTheme ? 'dark' : 'light'}
+            checked={darkTheme}
           />
           <span className='theme__icon'>
             <span className='theme__icon-part'></span>

@@ -18,16 +18,14 @@ const BlogsPage = async () => {
   const blogs = await getBlogs()
   return (
     <section className='c-container !pt-36'>
-      <h2 className='text-5xl font-bold px-5'>Blogs</h2>
-      {blogs.length > 0
-        ? (
+      <h2 className='px-5 text-5xl font-bold dark:text-white'>Blogs</h2>
+      {blogs.length > 0 ? (
         <BlogsSwiper blogs={blogs} />
-          )
-        : (
+      ) : (
         <div className='grid place-content-center min-h-[450px]'>
-          <p className='text-2xl font-bold px-5'>No blogs found</p>
+          <p className='px-5 text-2xl font-bold'>No blogs found</p>
         </div>
-          )}
+      )}
     </section>
   )
 }

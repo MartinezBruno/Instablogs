@@ -45,7 +45,7 @@ const RateUsSlides = ({ reviews }) => {
         >
           <div className='flex flex-col m-10'>
             <Stars rating={review.rating} />
-            <p className='mt-4 mb-11'>{review.content}</p>
+            <p className='mt-4 mb-11 dark:text-white'>{review.content}</p>
             <Link href={`/profile/${review.authorUsername}`}>
               <div className='flex gap-4 max-h-[60px]' id='user_rateus'>
                 <img
@@ -56,7 +56,7 @@ const RateUsSlides = ({ reviews }) => {
                   className='rounded-full'
                 />
                 <div>
-                  <p className='heading4 text-black'>
+                  <p className='text-black heading4'>
                     {review.authorName ?? 'Unknown author'}
                   </p>
                   <span className='text-black dark:text-white'>

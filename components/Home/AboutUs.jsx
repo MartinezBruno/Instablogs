@@ -31,7 +31,7 @@ const AboutUs = () => {
               scroll={true}
               href={article.handle}
               className={`${index % 2 && 'justify-end'
-                } flex text-sm font-bold leading-[175%] underline mt-5`}>
+                } flex text-sm font-bold leading-[175%] underline mt-5 dark:text-white`}>
               Learn more <Arrow />
             </Link>
           </div>
