@@ -12,10 +12,17 @@
       "semicolons": "asNeeded",
       "trailingCommas": "none",
       "arrowParentheses": "asNeeded",
+      "lineWidth": 120
     }
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "rules": {
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useKeyWithClickEvents": "off"
+      }
+    }
   },
   "organizeImports": {
     "enabled": true
