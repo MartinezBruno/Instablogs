@@ -2,7 +2,7 @@ import { BASE_URL } from '@/app/services/config'
 import OptimizedImage from '@/components/OptimizedImage'
 import Link from 'next/link'
 
-const getBlogDetail = async (blogId) => {
+const getBlogDetail = async blogId => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
     // next: { revalidate: 360 }
     cache: 'no-cache'
@@ -13,15 +13,10 @@ const getBlogDetail = async (blogId) => {
 
 const BlogDetail = async ({ blogId }) => {
   const blogDetail = await getBlogDetail(blogId)
-  const formattedContent = JSON.stringify(
-    blogDetail.content.replace(/\n/g, '<br/>')
-  )
+  const formattedContent = JSON.stringify(blogDetail.content.replace(/\n/g, '<br/>'))
   return (
     <article className='flex flex-col items-center' id='blog_article'>
-      <h1
-        className='font-extrabold text-2xl md:text-5xl text-center'
-        style={{ textWrap: 'balance' }}
-      >
+      <h1 className='font-extrabold text-2xl md:text-5xl text-center' style={{ textWrap: 'balance' }}>
         {blogDetail.title}
       </h1>
       <div className='flex justify-start items-center gap-2 my-3'>
@@ -29,20 +24,10 @@ const BlogDetail = async ({ blogId }) => {
           href={`/profile/${blogDetail.authorUsername}`}
           className='flex gap-3 items-center justify-start hover:opacity-70 transition-opacity'
         >
-          <img
-            src={blogDetail.authorPic}
-            width={40}
-            height={40}
-            alt='user photo'
-            className='rounded-full'
-          />
-          <span className='text-text_gray text-sm font-semibold'>
-            {blogDetail.authorName} |{' '}
-          </span>
+          <img src={blogDetail.authorPic} width={40} height={40} alt='user photo' className='rounded-full' />
+          <span className='text-text_gray text-sm font-semibold'>{blogDetail.authorName} | </span>
         </Link>
-        <span className='text-text_gray text-sm font-semibold'>
-          {new Date(blogDetail.createdAt).toDateString()}
-        </span>
+        <span className='text-text_gray text-sm font-semibold'>{new Date(blogDetail.createdAt).toDateString()}</span>
       </div>
       <OptimizedImage src={blogDetail.banner} alt={blogDetail.title} />
       {/* <img
@@ -70,9 +55,7 @@ const BlogDetail = async ({ blogId }) => {
           className='rounded-full max-w-[40px] max-h-[40px]'
         />
         <div className='flex flex-col'>
-          <span className='text-[#BBC8C4] font-bold tracking-[1.6px] uppercase text-base'>
-            Written By
-          </span>
+          <span className='text-[#BBC8C4] font-bold tracking-[1.6px] uppercase text-base'>Written By</span>
           <span className='text-[#25313C] dark:text-white text-sm md:text-2xl font-normal'>
             {blogDetail.authorName}
           </span>

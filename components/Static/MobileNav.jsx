@@ -5,31 +5,41 @@ const MobileNav = ({ isActive, handleClose, handleClickLink, currentRoute }) => 
   return (
     <div
       id='mobile-nav'
-      className={
-        `${isActive ? 'bg-white dark:bg-black z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}>
+      className={`${isActive ? 'bg-white dark:bg-black z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}
+    >
       <Close handleClose={handleClose} />
       <div className='flex flex-col mt-5 w-full relative gap-3 px-4'>
-        <Link href='/#about-us' className={`nav-link ${currentRoute === '/about-us' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
+        <Link
+          href='/#about-us'
+          className={`nav-link ${currentRoute === '/about-us' && 'underline underline-offset-[12px] ml-3'}`}
+          onClick={handleClickLink}
+        >
           About us
         </Link>
-        <Link href='/#opinions' className={`nav-link ${currentRoute === '/opinions' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
+        <Link
+          href='/#opinions'
+          className={`nav-link ${currentRoute === '/opinions' && 'underline underline-offset-[12px] ml-3'}`}
+          onClick={handleClickLink}
+        >
           Opinions
         </Link>
-        <Link href={'/blogs'} className={`nav-link ${currentRoute === '/blogs' && 'underline underline-offset-[12px] ml-3'}`} onClick={handleClickLink}>
+        <Link
+          href={'/blogs'}
+          className={`nav-link ${currentRoute === '/blogs' && 'underline underline-offset-[12px] ml-3'}`}
+          onClick={handleClickLink}
+        >
           Blog
         </Link>
       </div>
-      <Link
-        href='/'
-        title='InstaBlogs'
-        className='flex h-[100dvh]'>
+      <Link href='/' title='InstaBlogs' className='flex h-[100dvh]'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='37'
           height='74'
           viewBox='0 0 187 333'
           fill='none'
-          className='w-full h-auto max-w-[45%] absolute bottom-0 left-[50%] translate-x-[-50%]'>
+          className='w-full h-auto max-w-[45%] absolute bottom-0 left-[50%] translate-x-[-50%]'
+        >
           <path
             d='M147.911 24.2337H51.4962C40.5325 24.2337 31.6447 31.9881 31.6447 41.5537V266.87C31.6447 276.435 40.5325 284.19 51.4962 284.19H147.911C158.875 284.19 167.762 276.435 167.762 266.87V41.5537C167.762 31.9881 158.875 24.2337 147.911 24.2337Z'
             stroke='#FBB500'

@@ -22,7 +22,8 @@ const HorizontalDots = ({ blogId }) => {
         viewBox='0 0 40 40'
         fill='none'
         className='w-14 h-auto'
-        onClick={toggleMenu}>
+        onClick={toggleMenu}
+      >
         <path
           fillRule='evenodd'
           clipRule='evenodd'
@@ -33,8 +34,12 @@ const HorizontalDots = ({ blogId }) => {
       </svg>
       {showMenu && (
         <div className='absolute right-6 top-9 bg-white dark:bg-[#000000EB] flex flex-col'>
-          <span className='dropdown_link cursor-pointer' onClick={handleEdit}>Edit</span>
-          <span className='dropdown_link cursor-pointer' onClick={handleDelete}>Delete</span>
+          <span className='dropdown_link cursor-pointer' onClick={handleEdit}>
+            Edit
+          </span>
+          <span className='dropdown_link cursor-pointer' onClick={handleDelete}>
+            Delete
+          </span>
         </div>
       )}
     </div>

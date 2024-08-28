@@ -8,7 +8,8 @@ const Close = ({ handleClose }) => {
       viewBox='0 0 14 14'
       height='24'
       width='24'
-      onClick={handleClose}>
+      onClick={handleClose}
+    >
       <path
         stroke='currentColor'
         strokeLinecap='round'

@@ -10,9 +10,7 @@ const BlogCard = ({ blog, userId }) => {
 
   return (
     <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#000000] dark:shadow-[0px_4px_30px_0px_#00000040]'>
-      {session?.user?.id === userId && userId !== undefined && (
-        <HorizontalDots blogId={blog.id} />
-      )}
+      {session?.user?.id === userId && userId !== undefined && <HorizontalDots blogId={blog.id} />}
       {blog.banner && (
         <Link href={`/blogs/${blog.id}`}>
           <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
@@ -42,10 +40,7 @@ const BlogCard = ({ blog, userId }) => {
           />
           <span className='text-sm font-semibold text-text_gray dark:text-white'>
             {blog.authorName ?? 'Unknown author'}{' '}
-            <span className='hidden md:inline-block'>
-              {' '}
-              | {new Date(blog.createdAt).toDateString()}
-            </span>
+            <span className='hidden md:inline-block'> | {new Date(blog.createdAt).toDateString()}</span>
           </span>
         </div>
       </div>

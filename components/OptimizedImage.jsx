@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useRef } from 'react'
 
-export default function OptimizedImage ({ src, alt, className }) {
+export default function OptimizedImage({ src, alt, className }) {
   // const isLocalImage = src.startsWith('/')
 
   const blurredImageDiv = useRef(null)
@@ -49,7 +49,7 @@ export default function OptimizedImage ({ src, alt, className }) {
         alt={alt}
         width={1920}
         height={768}
-        onLoad={(e) => {
+        onLoad={e => {
           setTimeout(() => {
             loaded()
           }, 750)

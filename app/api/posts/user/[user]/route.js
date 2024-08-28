@@ -29,7 +29,7 @@ export const GET = async (request, { params }) => {
     })
     if (!posts) return NextResponse.error(new Error('Post not found'))
 
-    const postsWithAuthorData = posts.map((post) => {
+    const postsWithAuthorData = posts.map(post => {
       return {
         ...post,
         authorImage: user.image,

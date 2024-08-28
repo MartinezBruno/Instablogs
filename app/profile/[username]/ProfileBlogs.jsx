@@ -1,7 +1,7 @@
 import { BASE_URL } from '@/app/services/config'
 import ProfileBlogsGrid from './ProfileBlogsGrid'
 
-const getUserBlogs = async (username) => {
+const getUserBlogs = async username => {
   const res = await fetch(`${BASE_URL}/api/posts/user/${username}`, {
     // next: { revalidate: 300 }
     cache: 'no-cache'
@@ -9,7 +9,7 @@ const getUserBlogs = async (username) => {
   const userBlogs = await res.json()
   return userBlogs
 }
-const getUserInfo = async (username) => {
+const getUserInfo = async username => {
   const res = await fetch(`${BASE_URL}/api/user/${username}`, {
     cache: 'no-cache'
   })
@@ -21,10 +21,7 @@ const ProfileBlogs = async ({ username }) => {
   let userBlogs = []
   let userData = []
   try {
-    [userBlogs, userData] = await Promise.all([
-      getUserBlogs(username),
-      getUserInfo(username)
-    ])
+    ;[userBlogs, userData] = await Promise.all([getUserBlogs(username), getUserInfo(username)])
   } catch (error) {
     console.error(error)
   }

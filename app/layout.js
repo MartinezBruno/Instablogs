@@ -39,9 +39,7 @@ export default function RootLayout({ children }) {
       <body className={`h-screen ${muslish.className}`}>
         <Provider>
           <Nav />
-          <main className='bg-white dark:bg-[rgba(0,0,0,0.92)]'>
-            {children}
-          </main>
+          <main className='bg-white dark:bg-[rgba(0,0,0,0.92)]'>{children}</main>
           <SpeedInsights />
           <Footer />
         </Provider>

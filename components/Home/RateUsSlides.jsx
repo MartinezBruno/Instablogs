@@ -56,12 +56,8 @@ const RateUsSlides = ({ reviews }) => {
                   className='rounded-full'
                 />
                 <div>
-                  <p className='text-black heading4'>
-                    {review.authorName ?? 'Unknown author'}
-                  </p>
-                  <span className='text-black dark:text-white'>
-                    {review.authorPosition ?? 'Unknown position'}
-                  </span>
+                  <p className='text-black heading4'>{review.authorName ?? 'Unknown author'}</p>
+                  <span className='text-black dark:text-white'>{review.authorPosition ?? 'Unknown position'}</span>
                 </div>
               </div>
             </Link>

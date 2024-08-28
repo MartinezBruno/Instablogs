@@ -18,9 +18,9 @@ const Hero = () => {
         <div className='flex flex-col gap-8 max-w-[515px] mx-auto md:mx-0 mt-28'>
           <h1 className='heading1 !text-white break-words'>Instant collaboration for remote teams</h1>
           <p className='paragraph !text-white'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
           </p>
           <form className='flex flex-col md:flex-row gap-6 mt-12'>
             <input
@@ -30,7 +30,8 @@ const Hero = () => {
             />
             <button
               type='submit'
-              className='text-white text-base font-bold leading-[150%] bg-yellow dark:bg-purple rounded px-6 py-3 hover:bg-yellow/90 hover:dark:bg-purple/90 transition-colors ease-in-out'>
+              className='text-white text-base font-bold leading-[150%] bg-yellow dark:bg-purple rounded px-6 py-3 hover:bg-yellow/90 hover:dark:bg-purple/90 transition-colors ease-in-out'
+            >
               Get early access
             </button>
           </form>

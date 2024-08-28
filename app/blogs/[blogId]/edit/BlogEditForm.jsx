@@ -16,7 +16,7 @@ const BlogEditForm = ({ blog }) => {
 
   const [blogData, setBlogData] = useState(INITIAL_BLOG_DATA)
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setBlogData({ ...blogData, [e.target.name]: e.target.value })
   }
   const updateBlog = async () => {
@@ -32,10 +32,7 @@ const BlogEditForm = ({ blog }) => {
     }
 
     // check if blogData is the same as the initial data
-    if (
-      blogData.blogTitle === INITIAL_BLOG_DATA.blogTitle &&
-      blogData.blogContent === INITIAL_BLOG_DATA.blogContent
-    ) {
+    if (blogData.blogTitle === INITIAL_BLOG_DATA.blogTitle && blogData.blogContent === INITIAL_BLOG_DATA.blogContent) {
       return Swal.fire({
         icon: 'warning',
         title: 'Be Careful!',

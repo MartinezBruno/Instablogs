@@ -24,14 +24,14 @@ const ProfileButtons = ({ user }) => {
     position: user.position
   }
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setUserInfo({
       ...userInfo,
       [e.target.name]: e.target.value
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
     if (JSON.stringify(initialUserInfo) === JSON.stringify(userInfo)) {
       return Swal.fire({
@@ -66,10 +66,19 @@ const ProfileButtons = ({ user }) => {
 
   return (
     <div className='flex gap-2 items-stretch justify-start flex-wrap'>
-      <button className='btn_profile' onClick={() => setIsModalOpen(true)}>Edit</button>
-      <Link href={'/create-blog'} className='btn_profile'>Create new blog</Link>
+      <button className='btn_profile' onClick={() => setIsModalOpen(true)}>
+        Edit
+      </button>
+      <Link href={'/create-blog'} className='btn_profile'>
+        Create new blog
+      </Link>
       {isModalOpen && (
-        <FormModal userInfo={userInfo} closeModal={closeModal} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <FormModal
+          userInfo={userInfo}
+          closeModal={closeModal}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       )}
     </div>
   )

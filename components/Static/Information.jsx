@@ -8,9 +8,7 @@ const Information = ({ article }) => {
         className='object-cover w-full lg:max-w-[44%] h-full'
       />
       <div className='basis-full'>
-        <h2 className='text-xl lg:text-5xl font-extrabold text-yellow dark:text-purple my-3'>
-          {article.title}
-        </h2>
+        <h2 className='text-xl lg:text-5xl font-extrabold text-yellow dark:text-purple my-3'>{article.title}</h2>
         <p className='text-black dark:text-white font-semibold text-justify leading-[140%] tracking-[-0.26px] text-sm md:text-base lg:text-xl'>
           {article.content}
         </p>

@@ -7,15 +7,13 @@ const CreateBlog = async () => {
   const session = await getServerSession(authOptions)
   return (
     <section className='c-container !pt-36 min-h-[60%]'>
-      {!session?.user
-        ? (
+      {!session?.user ? (
         <div className='h-full grid place-content-center'>
           <SignIn />
         </div>
-          )
-        : (
-        <CreateBlogForm user={session.user}/>
-          )}
+      ) : (
+        <CreateBlogForm user={session.user} />
+      )}
     </section>
   )
 }

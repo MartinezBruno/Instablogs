@@ -2,7 +2,7 @@ import { BASE_URL } from '@/app/services/config'
 import BlogEditForm from './BlogEditForm'
 // import Link from 'next/link'
 
-const getBlogDetail = async (blogId) => {
+const getBlogDetail = async blogId => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
     // next: { revalidate: 360 }
     cache: 'no-cache'

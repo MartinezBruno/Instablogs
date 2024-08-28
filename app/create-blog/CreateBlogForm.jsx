@@ -65,7 +65,7 @@ const CreateBlogForm = ({ user }) => {
     }
   }
 
-  const handleOnChange = (e) => {
+  const handleOnChange = e => {
     const { name, value } = e.target
     setBlog({ ...blog, [name]: value })
     // if (name === 'content') handleHeight(e)
@@ -83,7 +83,7 @@ const CreateBlogForm = ({ user }) => {
   //   }
   // }
 
-  const handleErrors = (blog) => {
+  const handleErrors = blog => {
     const errors = {}
     if (!blog.title) errors.title = 'Title is required'
     if (!blog.banner) errors.banner = 'Banner is required'
@@ -93,7 +93,7 @@ const CreateBlogForm = ({ user }) => {
     return Object.keys(errors).length === 0
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
     setLoading(true)
     const errors = handleErrors(blog)
@@ -104,9 +104,7 @@ const CreateBlogForm = ({ user }) => {
       userId: user.id
     })
     if (!imageUrl) {
-      alert(
-        'Something went wrong while uploading your image, try again or contact us'
-      )
+      alert('Something went wrong while uploading your image, try again or contact us')
       return setLoading(false)
     }
     setBlog({ ...blog, banner: imageUrl })
@@ -152,27 +150,16 @@ const CreateBlogForm = ({ user }) => {
         </div>
         <div className='overflow-hidden'>
           <div onClick={handleImageClick}>
-            <input
-              type='file'
-              name='image'
-              id='image'
-              ref={inputRef}
-              className='hidden'
-              accept='image/*'
-            />
+            <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
             <img
               src={preview}
               className='cursor-pointer aspect-video w-full object-cover object-center'
               alt='Banner image'
             />
           </div>
-          <span className='text-xs text-gray-500'>
-            Recomended size: 1920x1080px - Max weight: 10MB
-          </span>
+          <span className='text-xs text-gray-500'>Recomended size: 1920x1080px - Max weight: 10MB</span>
           {errors.banner && (
-            <span className='text-red-500 block text-sm'>
-              Your image should not weight more than 10MB
-            </span>
+            <span className='text-red-500 block text-sm'>Your image should not weight more than 10MB</span>
           )}
         </div>
         <div>
@@ -185,9 +172,7 @@ const CreateBlogForm = ({ user }) => {
             value={blog.content}
             // onFocus={handleFocus}
           ></textarea>
-          {errors.content && (
-            <span className='text-red-500'>{errors.content}</span>
-          )}
+          {errors.content && <span className='text-red-500'>{errors.content}</span>}
         </div>
         <button
           disabled={loading}

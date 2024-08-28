@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import './ThemeSwitch.css'
 
@@ -43,18 +43,19 @@ export default function SetTheme() {
             role='switch'
             name='theme'
             value={darkTheme ? 'dark' : 'light'}
+            aria-checked={darkTheme}
             checked={darkTheme}
           />
           <span className='theme__icon'>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
-            <span className='theme__icon-part'></span>
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
+            <span className='theme__icon-part' />
           </span>
         </span>
       </label>

@@ -11,7 +11,7 @@ export const authOptions = {
     })
   ],
   callbacks: {
-    async signIn ({ profile }) {
+    async signIn({ profile }) {
       try {
         const userExists = await prisma.user.findUnique({
           where: {
@@ -22,7 +22,11 @@ export const authOptions = {
           await prisma.user.create({
             data: {
               email: profile.email,
-              username: profile.name.replace(' ', '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''),
+              username: profile.name
+                .replace(' ', '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, ''),
               fullname: profile.name,
               image: profile.picture
             }
@@ -33,7 +37,7 @@ export const authOptions = {
         console.error(error)
       }
     },
-    async session ({ session }) {
+    async session({ session }) {
       try {
         const user = await prisma.user.findUnique({
           where: {

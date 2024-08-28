@@ -8,7 +8,8 @@ const HamburgerIcon = ({ toggleMenu, svgFillColor }) => {
       height='24'
       fill='none'
       viewBox='0 0 16 12'
-      onClick={toggleMenu}>
+      onClick={toggleMenu}
+    >
       <path
         stroke={svgFillColor}
         strokeLinecap='round'

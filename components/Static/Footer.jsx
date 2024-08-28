@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import styles from './Footer.module.css'
 import ThemeToggle from '../Theme.util'
+import styles from './Footer.module.css'
 
 const companyLinks = [
   {
@@ -26,11 +26,7 @@ const customerServiceLinks = [
     link: '/privacy-policy'
   }
 ]
-const contactUsData = [
-  'info@instablogs.com',
-  '1-800-200-300',
-  '1010 Sunset Blv. Palo Alto, CA United States'
-]
+const contactUsData = ['info@instablogs.com', '1-800-200-300', '1010 Sunset Blv. Palo Alto, CA United States']
 
 const Footer = () => {
   return (
@@ -65,7 +61,7 @@ const Footer = () => {
           <div className='flex flex-col w-fit'>
             <h4 className={styles.column_header}>Company</h4>
             <ul>
-              {companyLinks.map((link) => (
+              {companyLinks.map(link => (
                 <li key={link.name}>
                   <Link href={link.link} className={styles.column_link}>
                     {link.name}
@@ -87,7 +83,7 @@ const Footer = () => {
           <div className='flex flex-col w-fit'>
             <h4 className={styles.column_header}>Customer Service</h4>
             <ul>
-              {customerServiceLinks.map((link) => (
+              {customerServiceLinks.map(link => (
                 <li key={link.name}>
                   <Link href={link.link} className={styles.column_link}>
                     {link.name}
@@ -99,9 +95,7 @@ const Footer = () => {
           <div className='sm:col-span-full sm:max-w-[40%] md:col-span-1 md:max-w-none'>
             <h4 className={styles.column_header}>Stay up to date</h4>
             <form className='flex flex-col'>
-              <label className={styles.column_link}>
-                Subscribe to our newsletter
-              </label>
+              <label className={styles.column_link}>Subscribe to our newsletter</label>
               <input
                 type='email'
                 className='py-[6.5px] px-2 border-[2px] border-yellow rounded placeholder:text-yellow dark:placeholder:text-purple focus:outline-none focus:border-blue'
