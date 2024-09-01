@@ -48,12 +48,12 @@ const CreateBlogForm = ({ user }) => {
 
     inputRef.current.onchange = () => {
       const file = inputRef.current.files[0]
-      console.log('Image first load', file.size / 1000 / 1000 + 'MB')
+      // console.log('Image first load', file.size / 1000 / 1000 + 'MB')
       if (file.size / 1000 / 1000 < 10) {
         return new Compressor(file, {
           quality: 0.6,
           success(result) {
-            console.log('Optimized image', result.size / 1000 / 1000 + 'MB')
+            // console.log('Optimized image', result.size / 1000 / 1000 + 'MB')
             const imageUrl = URL?.createObjectURL(result)
             setErrors({ ...errors, banner: false })
             setBlog({ ...blog, banner: result })
@@ -151,11 +151,7 @@ const CreateBlogForm = ({ user }) => {
         <div className='overflow-hidden'>
           <div onClick={handleImageClick}>
             <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
-            <img
-              src={preview}
-              className='object-cover object-center w-full cursor-pointer aspect-video'
-              alt='Banner'
-            />
+            <img src={preview} className='object-cover object-center w-full cursor-pointer aspect-video' alt='Banner' />
           </div>
           <span className='text-xs text-gray-500'>Recomended size: 1920x1080px - Max weight: 10MB</span>
           {errors.banner && (
@@ -171,7 +167,7 @@ const CreateBlogForm = ({ user }) => {
             onChange={handleOnChange}
             value={blog.content}
             // onFocus={handleFocus}
-          ></textarea>
+          />
           {errors.content && <span className='text-red-500'>{errors.content}</span>}
         </div>
         <button
@@ -179,14 +175,16 @@ const CreateBlogForm = ({ user }) => {
           type='submit'
           className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow dark:bg-purple disabled:bg-green-500 transition-[background-color,height] ease-in-out'
         >
-          {loading ? (
+          {loading
+            ? (
             <span>
               Posting...
               <Spinner />
             </span>
-          ) : (
-            'Post your blog!'
-          )}
+              )
+            : (
+                'Post your blog!'
+              )}
         </button>
       </div>
     </form>

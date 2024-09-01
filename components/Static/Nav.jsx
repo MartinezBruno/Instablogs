@@ -100,51 +100,53 @@ const Nav = () => {
           >
             Blog
           </Link>
-          {session?.user ? (
-            <div className=''>
-              <img
-                src={session?.user.image}
-                width={37}
-                height={37}
-                className='rounded-full max-w-[40px]'
-                alt='profile icon'
-                onClick={() => setToggleDropdown(prev => !prev)}
-              />
-              {toggleDropdown && (
-                <div className='absolute right-4 top-5 border border-gray-500 bg-white dark:bg-[#000000EB] flex flex-col items-center'>
-                  <Link
-                    href={`/profile/${session?.user.username}`}
-                    className='dropdown_link'
-                    onClick={() => setToggleDropdown(false)}
-                  >
-                    My profile
-                  </Link>
-                  <Link href='/create-blog' className='dropdown_link' onClick={() => setToggleDropdown(false)}>
-                    Create Blog
-                  </Link>
-                  <button
-                    type='button'
-                    onClick={() => {
-                      setToggleDropdown(false)
-                      signOut()
-                    }}
-                    className='dropdown_link'
-                  >
-                    Sign Out
-                  </button>
-                </div>
+          {session?.user
+            ? (
+              <div className=''>
+                <img
+                  src={session?.user.image}
+                  width={37}
+                  height={37}
+                  className='rounded-full max-w-[40px]'
+                  alt='profile icon'
+                  onClick={() => setToggleDropdown(prev => !prev)}
+                />
+                {toggleDropdown && (
+                  <div className='absolute right-4 top-5 border border-gray-500 bg-white dark:bg-[#000000EB] flex flex-col items-center'>
+                    <Link
+                      href={`/profile/${session?.user.username}`}
+                      className='dropdown_link'
+                      onClick={() => setToggleDropdown(false)}
+                    >
+                      My profile
+                    </Link>
+                    <Link href='/create-blog' className='dropdown_link' onClick={() => setToggleDropdown(false)}>
+                      Create Blog
+                    </Link>
+                    <button
+                      type='button'
+                      onClick={() => {
+                        setToggleDropdown(false)
+                        signOut()
+                      }}
+                      className='dropdown_link'
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+              )
+            : (
+              <button
+                type='button'
+                onClick={() => signIn('google')}
+                className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+                style={{ color: svgFillColor }}
+              >
+                Get access
+              </button>
               )}
-            </div>
-          ) : (
-            <button
-              type='button'
-              onClick={() => signIn('google')}
-              className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
-              style={{ color: svgFillColor }}
-            >
-              Get access
-            </button>
-          )}
         </div>
       </div>
 
@@ -186,51 +188,53 @@ const Nav = () => {
             />
           </svg>
         </Link>
-        {session?.user ? (
-          <div className='flex max-h-[37px]'>
-            <img
-              src={session?.user.image}
-              width={37}
-              height={37}
-              className='rounded-full max-w-[40px]'
-              alt='profile icon'
-              onClick={() => setToggleDropdown(prev => !prev)}
-            />
-            {toggleDropdown && (
-              <div className='absolute flex flex-col bg-white border border-gray-500 right-12 top-14'>
-                <Link
-                  href={`/profile/${session?.user.username}`}
-                  className='dropdown_link'
-                  onClick={() => setToggleDropdown(false)}
-                >
-                  My profile
-                </Link>
-                <Link href='/create-blog' className='dropdown_link' onClick={() => setToggleDropdown(false)}>
-                  Create Blog
-                </Link>
-                <button
-                  type='button'
-                  onClick={() => {
-                    setToggleDropdown(false)
-                    signOut()
-                  }}
-                  className='dropdown_link'
-                >
-                  Sign Out
-                </button>
-              </div>
+        {session?.user
+          ? (
+            <div className='flex max-h-[37px]'>
+              <img
+                src={session?.user.image}
+                width={37}
+                height={37}
+                className='rounded-full max-w-[40px]'
+                alt='profile icon'
+                onClick={() => setToggleDropdown(prev => !prev)}
+              />
+              {toggleDropdown && (
+                <div className='absolute flex flex-col bg-white border border-gray-500 right-12 top-14'>
+                  <Link
+                    href={`/profile/${session?.user.username}`}
+                    className='dropdown_link'
+                    onClick={() => setToggleDropdown(false)}
+                  >
+                    My profile
+                  </Link>
+                  <Link href='/create-blog' className='dropdown_link' onClick={() => setToggleDropdown(false)}>
+                    Create Blog
+                  </Link>
+                  <button
+                    type='button'
+                    onClick={() => {
+                      setToggleDropdown(false)
+                      signOut()
+                    }}
+                    className='dropdown_link'
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
+            )
+          : (
+            <button
+              type='button'
+              onClick={() => signIn('google')}
+              style={{ color: svgFillColor }}
+              className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+            >
+              Get access
+            </button>
             )}
-          </div>
-        ) : (
-          <button
-            type='button'
-            onClick={() => signIn('google')}
-            style={{ color: svgFillColor }}
-            className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
-          >
-            Get access
-          </button>
-        )}
         <MobileNav
           currentRoute={currentRoute}
           isActive={toggleMobileMenu}
