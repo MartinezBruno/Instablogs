@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Hero = () => {
   return (
     <section className='relative min-h-[687px] pt-16'>
-      <div className='bg-[rgba(11,8,2,0.33)] absolute inset-0'>
+      <div className='bg-[rgba(11,8,2,0.33)] absolute inset-0 z-0'>
         <Image
           src='https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/Banner-min.png?alt=media&token=addb78a5-1622-462a-96d8-bf08ed5ee7c2'
           alt='Hero image'
@@ -14,7 +14,7 @@ const Hero = () => {
           className='object-cover object-[top_0_right_-400px] md:object-[top_center] w-full h-full relative -z-20 dark:z-0'
         />
       </div>
-      <div className='c-container relative'>
+      <div className='relative c-container'>
         <div className='flex flex-col gap-8 max-w-[515px] mx-auto md:mx-0 mt-28'>
           <h1 className='heading1 !text-white break-words'>Instant collaboration for remote teams</h1>
           <p className='paragraph !text-white'>
@@ -22,7 +22,7 @@ const Hero = () => {
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat.
           </p>
-          <form className='flex flex-col md:flex-row gap-6 mt-12'>
+          <form className='flex flex-col gap-6 mt-12 md:flex-row'>
             <input
               type='email'
               placeholder='Email'

@@ -136,7 +136,7 @@ const CreateBlogForm = ({ user }) => {
 
   return (
     <form className='lg:px-[205px]' onSubmit={handleSubmit}>
-      <div className='mb-4 w-full flex flex-col gap-4'>
+      <div className='flex flex-col w-full gap-4 mb-4'>
         <div>
           <input
             type='text'
@@ -153,13 +153,13 @@ const CreateBlogForm = ({ user }) => {
             <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
             <img
               src={preview}
-              className='cursor-pointer aspect-video w-full object-cover object-center'
-              alt='Banner image'
+              className='object-cover object-center w-full cursor-pointer aspect-video'
+              alt='Banner'
             />
           </div>
           <span className='text-xs text-gray-500'>Recomended size: 1920x1080px - Max weight: 10MB</span>
           {errors.banner && (
-            <span className='text-red-500 block text-sm'>Your image should not weight more than 10MB</span>
+            <span className='block text-sm text-red-500'>Your image should not weight more than 10MB</span>
           )}
         </div>
         <div>
@@ -177,7 +177,7 @@ const CreateBlogForm = ({ user }) => {
         <button
           disabled={loading}
           type='submit'
-          className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow disabled:bg-green-500 transition-[background-color,height] ease-in-out'
+          className='text-white text-base font-bold leading-[150%] rounded-[5px] py-2 px-3 bg-yellow dark:bg-purple disabled:bg-green-500 transition-[background-color,height] ease-in-out'
         >
           {loading ? (
             <span>

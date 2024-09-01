@@ -64,7 +64,7 @@ const BlogEditForm = ({ blog }) => {
   return (
     <>
       <input
-        className='font-extrabold text-2xl md:text-5xl text-center mx-auto bg-transparent'
+        className='mx-auto text-2xl font-extrabold text-center bg-transparent md:text-5xl dark:text-white'
         style={{ textWrap: 'balance' }}
         contentEditable
         name='blogTitle'
@@ -72,7 +72,7 @@ const BlogEditForm = ({ blog }) => {
         onChange={handleChange}
       />
       <OptimizedImage src={blog.banner} alt={blog.title} className='mt-7' />
-      <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28 mt-7 mx-auto'>
+      <div className='w-full mx-auto transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28 mt-7'>
         <textarea
           name='blogContent'
           defaultValue={blogData.blogContent}
@@ -80,7 +80,7 @@ const BlogEditForm = ({ blog }) => {
           onChange={handleChange}
         ></textarea>
       </div>
-      <div className='w-full lg:w-3/4 transition-all duration-300 sm:px-14 md:px-28 mt-7 mx-auto'>
+      <div className='w-full mx-auto transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28 mt-7'>
         <button className='btn_profile' onClick={updateBlog}>
           Save Changes
         </button>

@@ -28,7 +28,7 @@ const ProfileBlogs = async ({ username }) => {
 
   return (
     <div className='mt-3 md:mt-10'>
-      <h3 className='font-bold text-xl md:text-3xl lg:text-[40px] mb-3'>Posts</h3>
+      <h3 className='font-bold text-xl md:text-3xl lg:text-[40px] mb-3 dark:text-white'>Posts</h3>
       <ProfileBlogsGrid blogs={userBlogs} user={userData} />
     </div>
   )

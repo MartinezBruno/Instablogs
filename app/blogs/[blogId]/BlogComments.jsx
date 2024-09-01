@@ -1,7 +1,7 @@
 import { BASE_URL } from '@/app/services/config'
 import Link from 'next/link'
 
-const getBlogComments = async blogId => {
+const getBlogComments = async (blogId) => {
   try {
     const response = await fetch(`${BASE_URL}/api/posts/comments/${blogId}`, {
       cache: 'no-store'
@@ -18,11 +18,13 @@ const BlogComments = async ({ blogId }) => {
   return (
     <>
       {comments.length >= 1 ? (
-        <div className='w-full lg:w-3/4 mx-auto transition-all duration-300 sm:px-14 md:px-28 flex flex-col justify-center items-start mt-5 gap-3'>
+        <div className='flex flex-col items-start justify-center w-full gap-3 mx-auto mt-5 transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28'>
           <h3 className='text-2xl font-bold'>Comments</h3>
-          <div className='border border-gray-200 w-full'>
-            {comments.map(comment => {
-              const formattedComment = JSON.stringify(comment.content.replace(/\n/g, '<br/>'))
+          <div className='w-full border border-gray-200'>
+            {comments.map((comment) => {
+              const formattedComment = JSON.stringify(
+                comment.content.replace(/\n/g, '<br/>')
+              )
               return (
                 <figure
                   key={comment.id}
@@ -30,7 +32,7 @@ const BlogComments = async ({ blogId }) => {
                 >
                   <blockquote className='mb-4 text-gray-500 dark:text-white lg:mb-8'>
                     <p
-                      className='my-4 text-start w-full'
+                      className='w-full my-4 text-start'
                       style={{ wordBreak: 'break-word' }}
                       dangerouslySetInnerHTML={{
                         __html: JSON.parse(formattedComment)
@@ -43,14 +45,20 @@ const BlogComments = async ({ blogId }) => {
                   >
                     <Link href={`/profile/${comment.author.username}`}>
                       <div className='flex flex-wrap items-center justify-end space-x-3'>
-                        <img className='rounded-full w-9 h-9' src={comment.author.image} alt='profile picture' />
+                        <img
+                          className='rounded-full w-9 h-9'
+                          src={comment.author.image}
+                          alt='profile picture'
+                        />
                         <div className='space-y-0.5 font-medium text-end min-[460px]:text-left'>
                           <p>{comment.author.fullname ?? 'Unknown author'}</p>
-                          <span className='text-sm text-gray-500 dark:text-white'>{comment.author.position ?? ''}</span>
+                          <span className='text-sm text-gray-500 dark:text-white'>
+                            {comment.author.position ?? ''}
+                          </span>
                         </div>
                       </div>
                     </Link>
-                    <span className='text-gray-500 dark:text-white flex items-center justify-center'>
+                    <span className='flex items-center justify-center text-gray-500 dark:text-white'>
                       {new Date(comment.createdAt).toDateString()}
                     </span>
                   </figcaption>
@@ -60,8 +68,10 @@ const BlogComments = async ({ blogId }) => {
           </div>
         </div>
       ) : (
-        <div className='w-full lg:w-3/4 mx-auto transition-all duration-300 sm:px-14 md:px-28 flex flex-col justify-center items-start mt-5 gap-3'>
-          <p className='mx-auto border-y py-8'>There is no comments for this blog, be the first to comment!</p>
+        <div className='flex flex-col items-start justify-center w-full gap-3 mx-auto mt-5 transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28'>
+          <p className='py-8 mx-auto border-y dark:text-white'>
+            There is no comments for this blog, be the first to comment!
+          </p>
         </div>
       )}
     </>
