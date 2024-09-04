@@ -1,6 +1,9 @@
 import { BASE_URL } from '@/app/services/config'
 import BlogsSwiper from './BlogsSwiper'
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 const getBlogs = async () => {
   const res = await fetch(`${BASE_URL}/api/posts`, {
     next: { revalidate: 360 }

@@ -4,9 +4,13 @@ const nextConfig = {
     serverComponentsExternalPackages: ['mongoose']
   },
   images: {
-    domains: ['lh3.googleusercontent.com', 'khqlvuznkpdsactdscrc.supabase.co', 'firebasestorage.googleapis.com']
+    domains: [
+      'lh3.googleusercontent.com',
+      'khqlvuznkpdsactdscrc.supabase.co',
+      'firebasestorage.googleapis.com'
+    ]
   },
-  webpack (config) {
+  webpack(config) {
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true
