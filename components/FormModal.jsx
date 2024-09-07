@@ -30,45 +30,56 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
             <span className='sr-only'>Close modal</span>
           </button>
           <div className='px-6 py-6 lg:px-8'>
-            <h3 className='mb-4 text-xl font-medium text-gray-900 dark:text-white'>Edit your profile</h3>
+            <h3 className='mb-4 text-xl font-medium text-gray-900 dark:text-white'>
+              Edit your profile
+            </h3>
             <form className='space-y-6' onSubmit={handleSubmit}>
               <div>
-                <label htmlFor='fullname' className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label
+                  htmlFor='fullname'
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                >
                   Name
                 </label>
                 <input
                   type='text'
                   name='fullname'
                   id='fullname'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                  className='bg-gray-50 dark:bg-[#DADADA57] border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                   autoComplete='off'
                   value={userInfo.fullname}
                   onChange={handleChange}
                 />
               </div>
               <div>
-                <label htmlFor='biography' className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label
+                  htmlFor='biography'
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                >
                   Bio
                 </label>
                 <input
                   type='text'
                   name='bio'
                   id='biography'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                  className='bg-gray-50 dark:bg-[#DADADA57] border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                   autoComplete='off'
                   value={userInfo.bio}
                   onChange={handleChange}
                 />
               </div>
               <div>
-                <label htmlFor='position' className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+                <label
+                  htmlFor='position'
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                >
                   Position
                 </label>
                 <input
                   type='text'
                   name='position'
                   id='position'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                  className='bg-gray-50 dark:bg-[#DADADA57] border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                   autoComplete='off'
                   value={userInfo.position}
                   onChange={handleChange}

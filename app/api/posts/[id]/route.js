@@ -81,7 +81,10 @@ export const PUT = async (request, { params }) => {
         content
       }
     })
-    if (!post) return NextResponse.error(new Error('Post not found'))
+    if (!post)
+      return NextResponse.error(
+        new Error('Unable to update post content, please try again later')
+      )
 
     return NextResponse.json({ message: 'Post updated' })
   } catch (error) {

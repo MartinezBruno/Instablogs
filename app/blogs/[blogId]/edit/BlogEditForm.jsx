@@ -14,53 +14,51 @@ const BlogEditForm = ({ blog }) => {
   INITIAL_BLOG_DATA.blogTitle = blog.title
   INITIAL_BLOG_DATA.blogContent = blog.content
 
-  const [blogData, setBlogData] = useState(INITIAL_BLOG_DATA)
+  const [blogData, setBlogData] = useState({
+    blogTitle: INITIAL_BLOG_DATA.blogTitle,
+    blogContent: INITIAL_BLOG_DATA.blogContent
+  })
+  const [isChanged, setIsChanged] = useState(false)
+  const [putResult, setPutResult] = useState({
+    code: 0,
+    message: ''
+  })
 
-  const handleChange = e => {
-    setBlogData({ ...blogData, [e.target.name]: e.target.value })
-  }
-  const updateBlog = async () => {
-    // check if blogData is empty
-    if (!blogData.blogTitle || !blogData.blogContent) {
-      return Swal.fire({
-        icon: 'warning',
-        title: 'Be Careful!',
-        text: 'Please make sure to fill in all fields before submitting the form.',
-        timer: 3000,
-        timerProgressBar: true
-      })
-    }
-
-    // check if blogData is the same as the initial data
-    if (blogData.blogTitle === INITIAL_BLOG_DATA.blogTitle && blogData.blogContent === INITIAL_BLOG_DATA.blogContent) {
-      return Swal.fire({
-        icon: 'warning',
-        title: 'Be Careful!',
-        text: 'Please make sure to change something before submitting the form.',
-        timer: 3000,
-        timerProgressBar: true
-      })
-    }
-    console.log(blog.id)
-    const res = await axios.put(`/api/posts/${blog.id}`, {
-      title: blogData.blogTitle,
-      content: blogData.blogContent
+  const handleChange = (e) => {
+    setBlogData({
+      ...blogData,
+      [e.target.name]: e.target.value
     })
-    console.log({ res, from: 'response' })
+    checkIfBlogDataChanged()
+  }
+
+  const checkIfBlogDataChanged = () => {
+    // blogData.blogTitle === INITIAL_BLOG_DATA.blogTitle &&
+    // blogData.blogContent === INITIAL_BLOG_DATA.blog
+    const isChanged =
+      blogData.blogTitle !== INITIAL_BLOG_DATA.blogTitle ||
+      blogData.blogContent !== INITIAL_BLOG_DATA.blogContent
+    setIsChanged(isChanged)
+  }
+
+  const updateBlog = async ({ title, content }) => {
+    const res = await axios.put(`/api/posts/${blog.id}`, {
+      title,
+      content
+    })
+
+    setPutResult({
+      code: res.status,
+      message: res.data.message
+    })
+
     if (res.status === 200) {
-      return Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Your blog has been updated successfully.',
-        timer: 3000,
-        timerProgressBar: true,
-        didClose: () => {
-          // redirect to blog page
-          window.location.href = `/blogs/${blog.id}`
-        }
-      })
+      setTimeout(() => {
+        window.location.href = `/blogs/${blog.id}`
+      }, 2000)
     }
   }
+
   return (
     <>
       <input
@@ -78,12 +76,25 @@ const BlogEditForm = ({ blog }) => {
           defaultValue={blogData.blogContent}
           className='text-text_gray dark:text-white md:text-lg lg:text-xl leading-[130%] break-words w-full bg-transparent'
           onChange={handleChange}
-        ></textarea>
+        />
       </div>
       <div className='w-full mx-auto transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28 mt-7'>
-        <button className='btn_profile' onClick={updateBlog}>
+        <button
+          type='button'
+          className='btn_profile disabled:cursor-not-allowed disabled:opacity-30'
+          disabled={!isChanged}
+          onClick={() =>
+            updateBlog({
+              title: blogData.blogTitle,
+              content: blogData.blogContent
+            })
+          }
+        >
           Save Changes
         </button>
+        {putResult.code === 200 && (
+          <div className='mt-5 text-green-500'>{putResult.message}</div>
+        )}
       </div>
     </>
   )
