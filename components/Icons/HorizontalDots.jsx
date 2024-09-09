@@ -6,9 +6,11 @@ const HorizontalDots = ({ blogId }) => {
   const router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
   const toggleMenu = () => setShowMenu(!showMenu)
+
   const handleDelete = async () => {
     await axios.delete(`/api/posts/${blogId}`)
-    router.replace()
+    // reload the page to reflect the changes
+    window.location.reload()
   }
   const handleEdit = () => {
     router.push(`/blogs/${blogId}/edit`)
@@ -21,7 +23,7 @@ const HorizontalDots = ({ blogId }) => {
         height='40'
         viewBox='0 0 40 40'
         fill='none'
-        className='w-14 h-auto'
+        className='h-auto w-14'
         onClick={toggleMenu}
       >
         <path
@@ -34,10 +36,10 @@ const HorizontalDots = ({ blogId }) => {
       </svg>
       {showMenu && (
         <div className='absolute right-6 top-9 bg-white dark:bg-[#000000EB] flex flex-col'>
-          <span className='dropdown_link cursor-pointer' onClick={handleEdit}>
+          <span className='cursor-pointer dropdown_link' onClick={handleEdit}>
             Edit
           </span>
-          <span className='dropdown_link cursor-pointer' onClick={handleDelete}>
+          <span className='cursor-pointer dropdown_link' onClick={handleDelete}>
             Delete
           </span>
         </div>

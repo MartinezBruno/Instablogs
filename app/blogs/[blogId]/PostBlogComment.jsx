@@ -116,9 +116,9 @@ const PostBlogComment = ({ blogId }) => {
                   name='comment'
                   id='comment'
                   placeholder='Comment'
-                  className='border-[2px] h-[93px] lg:h-[195px] w-full p-4 dark:bg-[#000000EB]'
+                  className='border-[2px] h-[93px] lg:h-[195px] w-full p-4 dark:bg-[#000000EB] dark:text-white'
                 />
-                <span>
+                <span className='dark:text-white'>
                   {charsLeft} / {limitChars}
                 </span>
                 <p className={`${message.alertStyles}`}>{message.text}</p>

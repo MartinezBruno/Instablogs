@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 const getBlogDetail = async (blogId) => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
-    // next: { revalidate: 360 }
-    cache: 'no-cache'
+    next: { revalidate: 30 }
+    // cache: 'no-cache'
   })
   const data = await res.json()
   return data

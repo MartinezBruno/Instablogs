@@ -39,7 +39,7 @@ const ProfileBlogsGrid = ({ blogs, user }) => {
           )
         : (
         <div className='grid place-content-center min-h-[450px]'>
-          <p className='px-5 text-2xl font-bold'>No blogs found</p>
+          <p className='px-5 text-2xl font-bold dark:text-white'>No blogs found</p>
         </div>
           )}
     </>

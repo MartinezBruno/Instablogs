@@ -114,7 +114,7 @@ const CreateBlogForm = ({ user }) => {
     Swal.fire({
       title: 'Success!',
       text: 'Your blog has been posted',
-      html: `You can see it <a href="/blog/${post.id}" class="text-blue-500">here</a>`,
+      html: `You can see it on your profile! <a href="/profile/${user.username}" class="text-yellow">Go to profile</a>`,
       icon: 'success',
       confirmButtonColor: '#ffbb00',
       timer: 5000,
@@ -153,7 +153,7 @@ const CreateBlogForm = ({ user }) => {
             <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
             <img src={preview} className='object-cover object-center w-full cursor-pointer aspect-video' alt='Banner' />
           </div>
-          <span className='text-xs text-gray-500'>Recomended size: 1920x1080px - Max weight: 10MB</span>
+          <span className='text-xs text-gray-500'>Recomended size: 1920x1080px (16:9) - Max weight: 10MB</span>
           {errors.banner && (
             <span className='block text-sm text-red-500'>Your image should not weight more than 10MB</span>
           )}
@@ -163,7 +163,7 @@ const CreateBlogForm = ({ user }) => {
             name='content'
             id='content'
             placeholder='Type something'
-            className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500 dark:bg-black'
+            className='border p-3 w-full min-h-[155px] lg:min-h-[310px] transition-[height] duration-500 dark:bg-black dark:text-white'
             onChange={handleOnChange}
             value={blog.content}
             // onFocus={handleFocus}
