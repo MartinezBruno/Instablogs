@@ -5,10 +5,10 @@ const MobileNav = ({ isActive, handleClose, handleClickLink, currentRoute }) => 
   return (
     <div
       id='mobile-nav'
-      className={`${isActive ? 'bg-white dark:bg-black z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}
+      className={`${isActive ? 'bg-white dark:bg-[#000] z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}
     >
       <Close handleClose={handleClose} />
-      <div className='flex flex-col mt-5 w-full relative gap-3 px-4'>
+      <div className='relative flex flex-col w-full gap-3 px-4 mt-5'>
         <Link
           href='/#about-us'
           className={`nav-link ${currentRoute === '/about-us' && 'underline underline-offset-[12px] ml-3'}`}
