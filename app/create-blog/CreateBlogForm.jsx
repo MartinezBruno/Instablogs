@@ -153,7 +153,7 @@ const CreateBlogForm = ({ user }) => {
             <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
             <img src={preview} className='object-cover object-center w-full cursor-pointer aspect-video' alt='Banner' />
           </div>
-          <span className='text-xs text-gray-500'>Recomended size: 1920x1080px (16:9) - Max weight: 10MB</span>
+          <span className='text-xs text-gray-500'>Recommended size: 1920x1080px (16:9) - Max weight: 10MB</span>
           {errors.banner && (
             <span className='block text-sm text-red-500'>Your image should not weight more than 10MB</span>
           )}
