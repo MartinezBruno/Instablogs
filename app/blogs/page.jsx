@@ -1,12 +1,12 @@
 import { BASE_URL } from '@/app/services/config'
 import BlogsSwiper from './BlogsSwiper'
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
 
 const getBlogs = async () => {
   const res = await fetch(`${BASE_URL}/api/posts`, {
-    next: { revalidate: 360 }
+    next: { revalidate: 30 }
     // cache: 'no-cache'
   })
   if (!res.ok) {
@@ -24,12 +24,12 @@ const BlogsPage = async () => {
       <h2 className='px-5 text-5xl font-bold dark:text-white'>Blogs</h2>
       {blogs.length > 0
         ? (
-        <BlogsSwiper blogs={blogs} />
+            <BlogsSwiper blogs={blogs} />
           )
         : (
-        <div className='grid place-content-center min-h-[450px]'>
-          <p className='px-5 text-2xl font-bold'>No blogs found</p>
-        </div>
+            <div className='grid place-content-center min-h-[450px]'>
+              <p className='px-5 text-2xl font-bold dark:text-white'>No blogs found</p>
+            </div>
           )}
     </section>
   )
