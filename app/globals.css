@@ -84,7 +84,7 @@ textarea {
 
 .nav-link {
   /* Mobile nav button */
-  @apply text-[clamp(13px,6vw,29px)] font-semibold leading-[171%] transition-[margin];
+  @apply text-[clamp(13px,6vw,29px)] font-semibold leading-[171%] transition-[margin] dark:text-white;
 }
 .nav-link:focus {
   @apply ml-2;
@@ -191,7 +191,7 @@ textarea {
 }
 #user_comment:hover p,
 #user_rateus:hover p {
-  @apply transition-all duration-300 text-yellow;
+  @apply transition-all duration-300 text-yellow dark:text-purple;
 }
 
 #user_comment img,
