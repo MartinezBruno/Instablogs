@@ -9,6 +9,7 @@ import Provider from '@/components/Provider'
 import Footer from '@/components/Static/Footer'
 import Nav from '@/components/Static/Nav'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import RateUsPopup from '@/components/RatePopUp/RateUsPopup'
 
 const muslish = Mulish({
   weight: ['400', '600', '700', '800'],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           <Nav />
           <main className='bg-white dark:bg-[rgba(0,0,0,0.92)]'>{children}</main>
           <SpeedInsights />
+          <RateUsPopup />
           <Footer />
         </Provider>
       </body>
