@@ -47,13 +47,13 @@ const RateUsSlides = ({ reviews }) => {
             <Stars rating={review.rating} />
             <p className='mt-4 mb-11 dark:text-white'>{review.content}</p>
             <Link href={`/profile/${review.authorUsername}`}>
-              <div className='flex gap-4 max-h-[60px]' id='user_rateus'>
+              <div className='flex gap-4' id='user_rateus'>
                 <img
                   src={review.authorImage ?? 'https://via.placeholder.com/150'}
-                  alt='Review author image'
+                  alt='Review author'
                   width={60}
                   height={60}
-                  className='rounded-full'
+                  className='object-scale-down rounded-full h-[60px] w-[60px] aspect-square'
                 />
                 <div>
                   <p className='text-black heading4'>{review.authorName ?? 'Unknown author'}</p>
