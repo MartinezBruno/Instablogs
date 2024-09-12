@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server'
 
 export const POST = async request => {
   try {
-    // get the user id from params and update there biography or other details depending on the request body
     const body = await request.json()
     const { content, authorId, rating } = body
 
@@ -14,14 +13,35 @@ export const POST = async request => {
     })
     if (!user) return NextResponse.error(new Error('User not found'))
 
-    const review = await prisma.review.create({
-      data: {
-        content,
-        rating,
+    const existingReview = await prisma.review.findFirst({
+      where: {
         authorId
       }
     })
-    if (!review) return NextResponse.error(new Error('Review not created'))
+
+    let review
+
+    if (existingReview) {
+      review = await prisma.review.update({
+        where: {
+          id: existingReview.id
+        },
+        data: {
+          content,
+          rating
+        }
+      })
+    } else {
+      review = await prisma.review.create({
+        data: {
+          content,
+          rating,
+          authorId
+        }
+      })
+    }
+
+    if (!review) return NextResponse.error(new Error('Review not created or updated'))
 
     return NextResponse.json(review)
   } catch (error) {
