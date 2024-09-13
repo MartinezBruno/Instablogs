@@ -101,6 +101,13 @@ textarea {
   @apply text-white hover:bg-purple last:hover:bg-red-600;
 }
 
+.dark .rateus-star path {
+  @apply stroke-purple;
+}
+.dark .rateus-star path.active {
+  @apply fill-purple;
+}
+
 #navbar {
   animation: headerAnim linear both;
   animation-timeline: scroll();
