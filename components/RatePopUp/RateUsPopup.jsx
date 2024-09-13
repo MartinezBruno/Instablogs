@@ -72,17 +72,21 @@ const RateUsPopup = () => {
   return (
     <>
       {popupOpen && (
-        <div>
-          <h5>Rate us!</h5>
-          <p>Your opinion is important for InstaBlogs!</p>
-          <form onSubmit={handleSubmit}>
-            <RatingInput stars={stars} starsValue={rateData.stars} handleStars={handleStars} />
-            <OpinionInput handleOpinion={handleOpinion} />
-            <button type='submit'>Submit</button>
-            <button type='button' onClick={skipRating}>
-              Skip
-            </button>
-          </form>
+        <div className='fixed z-10 grid w-full h-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 place-items-center bg-black/40'>
+          <div
+            className='flex flex-col items-center justify-center p-8 bg-white dark:bg-[#000] h-fit w-fit border border-[#000] rounded-[20px]'
+          >
+            <h5 className='text-4xl font-semibold leading-10 dark:text-white'>Rate us!</h5>
+            <p className='text-lg dark:text-white'>Your opinion is important for InstaBlogs!</p>
+            <form onSubmit={handleSubmit}>
+              <RatingInput stars={stars} starsValue={rateData.stars} handleStars={handleStars} />
+              <OpinionInput handleOpinion={handleOpinion} />
+              <button type='submit'>Submit</button>
+              <button type='button' onClick={skipRating}>
+                Skip
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </>
