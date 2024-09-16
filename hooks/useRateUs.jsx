@@ -9,12 +9,19 @@ export default function useRateUs() {
       if (!rateObj) return true
 
       const { rateDate } = rateObj
-      const today = new Date().toDateString()
 
-      console.log({ rateDate, today })
+      const [rateDay, rateMonth, rateYear] = rateDate.split('/').map(Number)
+      const expirationDate = new Date(rateYear, rateMonth - 1, rateDay)
 
-      // if the rate date was 1 week ago, show the rate us popup
-      return today === rateDate
+      const today = new Date()
+
+      console.log({
+        today,
+        expirationDate,
+        bool: today >= expirationDate
+      })
+
+      return today >= expirationDate
     }
 
     setShow(checkRateUs())
