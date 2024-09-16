@@ -3,7 +3,6 @@
 import OptimizedImage from '@/components/OptimizedImage'
 import axios from 'axios'
 import { useState } from 'react'
-import Swal from 'sweetalert2'
 
 const INITIAL_BLOG_DATA = {
   blogTitle: '',
@@ -24,7 +23,7 @@ const BlogEditForm = ({ blog }) => {
     message: ''
   })
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setBlogData({
       ...blogData,
       [e.target.name]: e.target.value
@@ -36,8 +35,7 @@ const BlogEditForm = ({ blog }) => {
     // blogData.blogTitle === INITIAL_BLOG_DATA.blogTitle &&
     // blogData.blogContent === INITIAL_BLOG_DATA.blog
     const isChanged =
-      blogData.blogTitle !== INITIAL_BLOG_DATA.blogTitle ||
-      blogData.blogContent !== INITIAL_BLOG_DATA.blogContent
+      blogData.blogTitle !== INITIAL_BLOG_DATA.blogTitle || blogData.blogContent !== INITIAL_BLOG_DATA.blogContent
     setIsChanged(isChanged)
   }
 
@@ -61,8 +59,8 @@ const BlogEditForm = ({ blog }) => {
 
   return (
     <>
-      <input
-        className='mx-auto text-2xl font-extrabold text-center bg-transparent md:text-5xl dark:text-white'
+      <textarea
+        className='mx-auto text-2xl font-extrabold text-center bg-[#DAE3EA] dark:bg-[#000] md:text-5xl dark:text-white'
         style={{ textWrap: 'balance' }}
         contentEditable
         name='blogTitle'
@@ -74,7 +72,7 @@ const BlogEditForm = ({ blog }) => {
         <textarea
           name='blogContent'
           defaultValue={blogData.blogContent}
-          className='text-text_gray dark:text-white md:text-lg lg:text-xl leading-[130%] break-words w-full bg-transparent'
+          className='text-text_gray dark:text-white md:text-lg lg:text-xl leading-[130%] break-words w-full bg-[#DAE3EA] dark:bg-[#000]'
           onChange={handleChange}
         />
       </div>
@@ -92,9 +90,7 @@ const BlogEditForm = ({ blog }) => {
         >
           Save Changes
         </button>
-        {putResult.code === 200 && (
-          <div className='mt-5 text-green-500'>{putResult.message}</div>
-        )}
+        {putResult.code === 200 && <div className='mt-5 text-green-500'>{putResult.message}</div>}
       </div>
     </>
   )
