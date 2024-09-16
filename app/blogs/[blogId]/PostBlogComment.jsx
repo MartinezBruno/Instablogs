@@ -2,6 +2,7 @@
 
 import axios from 'axios'
 import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 const postComment = async (blogId, comment, userEmail) => {
@@ -19,6 +20,7 @@ const postComment = async (blogId, comment, userEmail) => {
 }
 
 const PostBlogComment = ({ blogId }) => {
+  const router = useRouter()
   const { data: session } = useSession()
   const [comment, setComment] = useState('')
   const [message, setMessage] = useState({
@@ -79,7 +81,7 @@ const PostBlogComment = ({ blogId }) => {
         ...message,
         alertStyles: 'max-h-0 '
       })
-      if (messageType === 'success') window.location.reload()
+      if (messageType === 'success') router.refresh()
     }, 2000)
   }
 
@@ -99,7 +101,7 @@ const PostBlogComment = ({ blogId }) => {
           </div>
           )
         : (
-          <form onSubmit={handleCommentSubmit} className='flex flex-col items-stretch pt-4 border-t'>
+          <form onSubmit={handleCommentSubmit} className='flex flex-col items-stretch pt-4 border-t dark:border-t-white'>
             <p className='mb-2 text-base font-normal md:text-2xl w-fit pl-11 dark:text-white'>Join the conversation</p>
             <div className='flex items-start gap-2'>
               <img

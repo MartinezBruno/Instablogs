@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const getBlogDetail = async (blogId) => {
   const res = await fetch(`${BASE_URL}/api/posts/${blogId}`, {
-    next: { revalidate: 30 }
+    next: { revalidate: 5 } // Reduced revalidation time to 5 seconds
     // cache: 'no-cache'
   })
   const data = await res.json()
@@ -59,7 +59,7 @@ const BlogDetail = async ({ blogId }) => {
             __html: JSON.parse(formattedContent)
           }}
         ></p>
-        <hr className='my-5 mx-7' />
+        <hr className='my-5 mx-7 dark:text-white' />
       </div>
       <div className='flex gap-4'>
         <img

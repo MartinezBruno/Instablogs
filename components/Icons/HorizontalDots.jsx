@@ -10,7 +10,7 @@ const HorizontalDots = ({ blogId }) => {
   const handleDelete = async () => {
     await axios.delete(`/api/posts/${blogId}`)
     // reload the page to reflect the changes
-    window.location.reload()
+    router.refresh()
   }
   const handleEdit = () => {
     router.push(`/blogs/${blogId}/edit`)
