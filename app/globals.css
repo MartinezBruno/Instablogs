@@ -102,7 +102,7 @@ textarea {
 }
 
 .dark .rateus-star path {
-  @apply stroke-purple;
+  @apply stroke-purple fill-[#000];
 }
 .dark .rateus-star path.active {
   @apply fill-purple;
