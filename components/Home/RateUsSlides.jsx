@@ -16,6 +16,7 @@ const RateUsSlides = ({ reviews }) => {
       style={{ paddingBottom: '110px' }}
       spaceBetween={16}
       slidesPerView={1.1}
+      centerInsufficientSlides={true}
       breakpoints={{
         768: {
           slidesPerView: 2.4
@@ -41,7 +42,7 @@ const RateUsSlides = ({ reviews }) => {
       {reviews?.map((review, index) => (
         <SwiperSlide
           key={index}
-          className='cursor-grab rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] border dark:border-none dark:bg-[#000000]'
+          className='cursor-grab rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] h-full border dark:border-none dark:bg-[#000000]'
         >
           <div className='flex flex-col m-10'>
             <Stars rating={review.rating} />
@@ -56,8 +57,12 @@ const RateUsSlides = ({ reviews }) => {
                   className='object-scale-down rounded-full h-[60px] w-[60px] aspect-square'
                 />
                 <div>
-                  <p className='text-black heading4'>{review.authorName ?? 'Unknown author'}</p>
-                  <span className='text-black dark:text-white'>{review.authorPosition ?? 'Unknown position'}</span>
+                  <p className='text-black heading4'>
+                    {review.authorName ?? 'Unknown author'}
+                  </p>
+                  <span className='text-black dark:text-white'>
+                    {review.authorPosition ?? 'Unknown position'}
+                  </span>
                 </div>
               </div>
             </Link>
