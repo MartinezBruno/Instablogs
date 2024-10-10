@@ -6,7 +6,6 @@ import styles from './BlogCard.module.css'
 
 const BlogCard = ({ blog, userId }) => {
   const { data: session } = useSession()
-  console.log(session?.user?.id, userId)
 
   return (
     <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#000000] dark:shadow-[0px_4px_30px_0px_#00000040]'>

@@ -49,17 +49,17 @@ export const DELETE = async (_request, { params }) => {
     })
     if (!post) return NextResponse.error(new Error('Post not found'))
 
-    const comments = await prisma.comment.deleteMany({
+    await prisma.comment.deleteMany({
       where: {
         postId: id
       }
     })
-    const postDel = await prisma.post.delete({
+    await prisma.post.delete({
       where: {
         id
       }
     })
-    console.log({ comments, postDel })
+
     return NextResponse.json({ message: 'Post deleted' })
   } catch (error) {
     console.error(error)

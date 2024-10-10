@@ -65,23 +65,33 @@ const CreateBlogForm = ({ user }) => {
     }
   }
 
+  const handleImageDrop = e => {
+    e.preventDefault()
+
+    const file = e.dataTransfer.files[0]
+    if (file.size / 1000 / 1000 < 10) {
+      return new Compressor(file, {
+        quality: 0.6,
+        success(result) {
+          const imageUrl = URL?.createObjectURL(result)
+          setErrors({ ...errors, banner: false })
+          setBlog({ ...blog, banner: result })
+          setPreview(imageUrl)
+        }
+      })
+    }
+    setErrors({ ...errors, banner: true })
+  }
+
+  const handleImageDragOver = e => {
+    e.preventDefault()
+  }
+
   const handleOnChange = e => {
     const { name, value } = e.target
     setBlog({ ...blog, [name]: value })
     // if (name === 'content') handleHeight(e)
   }
-
-  // const handleHeight = (e) => {
-  //   if (e.target.value === '') e.target.style.height = '0px'
-  //   else e.target.style.height = `${e.target.scrollHeight - 20}px`
-  // }
-
-  // const handleFocus = (e) => {
-  //   handleHeight(e)
-  //   e.target.onblur = () => {
-  //     e.target.style.height = '0px'
-  //   }
-  // }
 
   const handleErrors = blog => {
     const errors = {}
@@ -149,7 +159,7 @@ const CreateBlogForm = ({ user }) => {
           {errors.title && <span className='text-red-500'>{errors.title}</span>}
         </div>
         <div className='overflow-hidden'>
-          <div onClick={handleImageClick}>
+          <div onClick={handleImageClick} onDrop={handleImageDrop} onDragOver={handleImageDragOver}>
             <input type='file' name='image' id='image' ref={inputRef} className='hidden' accept='image/*' />
             <img src={preview} className='object-cover object-center w-full cursor-pointer aspect-video' alt='Banner' />
           </div>
