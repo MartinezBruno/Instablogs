@@ -21,13 +21,13 @@ const BlogComments = async ({ blogId }) => {
         ? (
             <div className='flex flex-col items-start justify-center w-full gap-3 mx-auto mt-5 transition-all duration-300 lg:w-3/4 sm:px-14 md:px-28'>
               <h3 className='text-2xl font-bold dark:text-white'>Comments</h3>
-              <div className='w-full border border-gray-200'>
+              <div className='w-full border border-gray-200 dark:border-white'>
                 {comments.map(comment => {
                   const formattedComment = JSON.stringify(comment.content.replace(/\n/g, '<br/>'))
                   return (
                     <figure
                       key={comment.id}
-                      className='flex flex-col items-start justify-center p-8 text-center bg-white dark:bg-[#000000EB] border-b rounded-t-lg md:rounded-t-none md:rounded-tl-lg'
+                      className='flex flex-col items-start justify-center p-8 text-center bg-white dark:bg-[#000000EB] border-b dark:border-b-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg'
                     >
                       <blockquote className='mb-4 text-gray-500 dark:text-white lg:mb-8'>
                         <p
