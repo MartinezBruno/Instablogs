@@ -90,11 +90,11 @@ const PostBlogComment = ({ blogId }) => {
       {!session?.user
         ? (
           <div className='flex flex-col items-start gap-2'>
-            <p>Please sign in to post a comment</p>
+            <p className='dark:text-white'>Please sign in to post a comment</p>
             <button
               type='button'
               onClick={() => signIn('google')}
-              className='text-base text-white font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 bg-yellow hover:opacity-70 transition-[background-color] ease-in-out'
+              className='text-base text-white font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 bg-yellow dark:bg-purple hover:opacity-70 transition-[background-color] ease-in-out'
             >
               Get access
             </button>
