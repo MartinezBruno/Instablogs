@@ -19,13 +19,15 @@ const ProfileHeader = async ({ username }) => {
         alt={userData.name}
         width={140}
         height={140}
-        className='self-start rounded-full w-10 h-auto md:w-20 lg:w-36'
+        className='self-start w-10 h-auto rounded-full md:w-20 lg:w-36'
       />
       <div className='flex flex-col gap-2 lg:gap-6 md:mt-5 lg:mt-8'>
         <h1 className='text-black dark:text-white font-bold text-xl md:text-3xl lg:text-[40px]'>{userData.fullname}</h1>
-        <p className='text-text_gray dark:text-white font-semibold leading-[150%] text-sm md:text-lg lg:text-2xl'>
-          {userData.position}, {userData.bio}
-        </p>
+        {( userData.position || userData.bio ) && (
+          <p className='text-text_gray dark:text-white font-semibold leading-[150%] text-sm md:text-lg lg:text-2xl'>
+            {userData.position && `${userData.position},`} {userData.bio}
+          </p>
+        )}
         <ProfileButtons user={userData} />
       </div>
     </div>
