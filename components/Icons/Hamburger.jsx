@@ -1,7 +1,7 @@
-const HamburgerIcon = ({ toggleMenu, svgFillColor }) => {
+const HamburgerIcon = ({ toggleMenu }) => {
   return (
     <svg
-      className='w-full h-auto text-gray-800 cursor-pointer'
+      className='w-full h-auto text-gray-800 cursor-pointer hamburger'
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
       width='24'
@@ -11,7 +11,7 @@ const HamburgerIcon = ({ toggleMenu, svgFillColor }) => {
       onClick={toggleMenu}
     >
       <path
-        stroke={svgFillColor}
+        className="path"
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth='2'

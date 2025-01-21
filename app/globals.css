@@ -108,6 +108,20 @@ textarea {
   @apply fill-purple;
 }
 
+.hamburger > .path {
+  @apply stroke-[#000]
+}
+#site-logo > .path {
+  @apply fill-[#000]
+}
+
+.dark .hamburger > .path {
+  @apply stroke-white;
+}
+.dark #site-logo > .path {
+  @apply fill-white
+}
+
 #navbar {
   animation: headerAnim linear both;
   animation-timeline: scroll();
