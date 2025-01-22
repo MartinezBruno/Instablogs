@@ -11,6 +11,7 @@ import Stars from '../Icons/Stars'
 import './Slides.css'
 
 const RateUsSlides = ({ reviews }) => {
+  console.log({ reviews })
   return (
     <Swiper
       style={{ paddingBottom: '110px' }}
@@ -39,36 +40,55 @@ const RateUsSlides = ({ reviews }) => {
         disableOnInteraction: false
       }}
     >
-      {reviews?.map((review, index) => (
-        <SwiperSlide
-          key={index}
-          className='cursor-grab rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] h-full border dark:border-none dark:bg-[#000000]'
-        >
-          <div className='flex flex-col m-10'>
-            <Stars rating={review.rating} />
-            <p className='mt-4 mb-11 dark:text-white'>{review.content}</p>
-            <Link href={`/profile/${review.authorUsername}`}>
-              <div className='flex gap-4' id='user_rateus'>
-                <img
-                  src={review.authorImage ?? 'https://via.placeholder.com/150'}
-                  alt='Review author'
-                  width={60}
-                  height={60}
-                  className='object-scale-down rounded-full h-[60px] w-[60px] aspect-square'
-                />
-                <div>
-                  <p className='text-black heading4'>
-                    {review.authorName ?? 'Unknown author'}
-                  </p>
-                  <span className='text-black dark:text-white'>
-                    {review.authorPosition ?? 'Unknown position'}
-                  </span>
-                </div>
+      {reviews?.map((review, index) => {
+        const reviewDate = new Date(review.updatedAt)
+        const monthNames = [
+          "January", "February", "March", "April", "May", "June", 
+          "July", "August", "September", "October", "November", "December"
+        ];
+
+        const day = reviewDate.getUTCDate() // Day of the month
+        const month = monthNames[reviewDate.getUTCMonth()]
+        const year = reviewDate.getUTCFullYear() // Year
+
+        return (
+          <SwiperSlide
+            key={index}
+            className='cursor-grab rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] h-full border dark:border-none dark:bg-[#000000]'
+          >
+            <div className='flex flex-col m-10'>
+              <div className='flex items-center justify-between w-full'>
+                <Stars rating={review.rating} />
+                <span className='text-xs text-slate-400'>
+                  {day} {month}, {year}
+                </span>
               </div>
-            </Link>
-          </div>
-        </SwiperSlide>
-      ))}
+              <p className='mt-4 dark:text-white mb-11'>{review.content}</p>
+              <Link href={`/profile/${review.authorUsername}`}>
+                <div className='flex gap-4' id='user_rateus'>
+                  <img
+                    src={
+                      review.authorImage ?? 'https://via.placeholder.com/150'
+                    }
+                    alt='Review author'
+                    width={60}
+                    height={60}
+                    className='object-scale-down rounded-full h-[60px] w-[60px] aspect-square'
+                  />
+                  <div>
+                    <p className='text-black heading4'>
+                      {review.authorName ?? 'Unknown author'}
+                    </p>
+                    <span className='text-black dark:text-white'>
+                      {review.authorPosition ?? 'Unknown position'}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </SwiperSlide>
+        )
+      })}
       <div className='flex justify-end mt-4 mr-8'>
         <span className='swiper-button-prev cursor-pointer !static'>
           <ArrowLeft />
