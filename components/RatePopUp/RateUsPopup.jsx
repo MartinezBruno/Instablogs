@@ -86,9 +86,9 @@ const RateUsPopup = () => {
     <>
       {popupOpen && (
         <div className='fixed z-10 grid w-full h-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 place-items-center bg-black/40'>
-          <div className='flex flex-col items-center justify-center p-8 gap-3 bg-white dark:bg-[#000] h-fit w-fit border border-[#000] rounded-[20px]'>
+          <div className='flex flex-col items-center justify-center p-8 mx-5 gap-3 bg-white dark:bg-[#000] h-fit w-fit border border-[#000] rounded-[20px]'>
             <h5 className='text-4xl font-semibold leading-10 dark:text-white'>Rate us!</h5>
-            <p className='text-lg dark:text-white'>Your opinion is important for InstaBlogs!</p>
+            <p className='text-lg text-center dark:text-white'>Your opinion is important for InstaBlogs!</p>
             <form onSubmit={handleSubmit} className='grid gap-6 place-items-center w-fit'>
               <RatingInput stars={stars} starsValue={rateData.stars} handleStars={handleStars} />
               <OpinionInput handleOpinion={handleOpinion} />

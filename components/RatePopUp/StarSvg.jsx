@@ -6,7 +6,7 @@ const starSvg = ({ isActive }) => {
       viewBox='0 0 54 51'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      className='transition-all cursor-pointer rateus-star'
+      className='w-full transition-all cursor-pointer rateus-star'
     >
       <path
         className={isActive ? 'active' : 'inactive'}
