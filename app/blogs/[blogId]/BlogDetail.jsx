@@ -70,13 +70,13 @@ const BlogDetail = async ({ blogId }) => {
           className='rounded-full max-w-[40px] max-h-[40px]'
         />
         <div className='flex flex-col'>
-          <span className='text-[#BBC8C4] font-bold tracking-[1.6px] uppercase text-base'>
+          <span className='text-[#BBC8C4] text-[10px] md:text-base font-bold tracking-[1.6px] uppercase text-base'>
             Written By
           </span>
           <span className='text-[#25313C] dark:text-white text-sm md:text-2xl font-normal'>
             {blogDetail.authorName}
           </span>
-          <span className='dark:text-white'>{blogDetail.authorPos}</span>
+          <span className='dark:text-white text-[10px] md:text-sm'>{blogDetail.authorPos}</span>
         </div>
       </div>
     </article>

@@ -9,9 +9,32 @@
 }
 
 .column_header {
-  @apply text-white text-base md:text-xl lg:text-2xl font-bold;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+@media (width >= 768px) {
+  .column_header {
+    font-size: 20px
+  }
+}
+@media (width >= 1024px) {
+  .column_header {
+    font-size: 24px
+  }
 }
 
 .column_link {
-  @apply text-white font-normal text-sm md:text-base lg:text-lg;
+  color: white;
+  font-size: 14px;
+}
+@media (width >= 768px) {
+  .column_link {
+    font-size: 16px;
+  }
+}
+@media (width >= 1024px) {
+  .column_link {
+    font-size: 18px;
+  }
 }

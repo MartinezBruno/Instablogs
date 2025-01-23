@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import Swal from 'sweetalert2'
 
 const HorizontalDots = ({ blogId }) => {
   const router = useRouter()
@@ -8,9 +9,32 @@ const HorizontalDots = ({ blogId }) => {
   const toggleMenu = () => setShowMenu(!showMenu)
 
   const handleDelete = async () => {
-    await axios.delete(`/api/posts/${blogId}`)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this",
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonColor: '#ffbb00',
+      confirmButtonColor: '#dc2626',
+      confirmButtonText: 'Delete',
+      denyButtonText: `Don't delete`
+    }).then(async (result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        await axios.delete(`/api/posts/${blogId}`)
+        Swal.fire({
+          title: 'Blog was deleted',
+          icon: 'success',
+          text: 'Keep in mind that this action might take a few minutes',
+          timer: 5000,
+          timerProgressBar: true
+        }).then(() => {
+          router.refresh()
+        })
+      }
+    })
+
     // reload the page to reflect the changes
-    router.refresh()
   }
   const handleEdit = () => {
     router.push(`/blogs/${blogId}/edit`)

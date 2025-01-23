@@ -15,12 +15,6 @@ export default function useRateUs() {
 
       const today = new Date()
 
-      console.log({
-        today,
-        expirationDate,
-        bool: today >= expirationDate
-      })
-
       return today >= expirationDate
     }
 

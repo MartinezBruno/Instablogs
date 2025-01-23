@@ -74,8 +74,15 @@ const Nav = () => {
             href='/#about-us'
             className={`
               font-bold
-              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
-              ${ currentRoute === '/about-us' && 'underline underline-offset-[12px]'}
+              ${
+                currentRoute === '/'
+                  ? 'text-white'
+                  : 'text-black dark:text-white'
+              }
+              ${
+                currentRoute === '/about-us' &&
+                'underline underline-offset-[12px]'
+              }
             `}
           >
             About Us
@@ -84,8 +91,15 @@ const Nav = () => {
             href='/#opinions'
             className={`
               font-bold
-              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
-              ${ currentRoute === '/opinions' && 'underline underline-offset-[12px]'}
+              ${
+                currentRoute === '/'
+                  ? 'text-white'
+                  : 'text-black dark:text-white'
+              }
+              ${
+                currentRoute === '/opinions' &&
+                'underline underline-offset-[12px]'
+              }
             `}
           >
             Opinions
@@ -94,8 +108,14 @@ const Nav = () => {
             href='/blogs'
             className={`
               font-bold
-              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
-              ${ currentRoute === '/blogs' && 'underline underline-offset-[12px]'}
+              ${
+                currentRoute === '/'
+                  ? 'text-white'
+                  : 'text-black dark:text-white'
+              }
+              ${
+                currentRoute === '/blogs' && 'underline underline-offset-[12px]'
+              }
             `}
           >
             Blog
@@ -144,10 +164,14 @@ const Nav = () => {
               type='button'
               onClick={() => signIn('google')}
               className={`
-                text-base font-bold leading-[150%] 
-                bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow 
+                text-base font-bold leading-[150%]
+                bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow dark:hover:bg-purple
                 transition-[background-color] ease-in-out
-                ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
+                ${
+                  currentRoute === '/'
+                    ? 'text-white'
+                    : 'text-black dark:text-white'
+                }
               `}
             >
               Get access
@@ -159,9 +183,7 @@ const Nav = () => {
       {/* Mobile Nav */}
       <div className='relative flex justify-between w-full sm:hidden c-container'>
         <div className='my-auto'>
-          <Hamburger
-            toggleMenu={handleToggleMobileMenu}
-          />
+          <Hamburger toggleMenu={handleToggleMobileMenu} />
         </div>
         <Link href='/' title='Instablogs'>
           <svg
