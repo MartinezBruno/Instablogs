@@ -14,7 +14,6 @@ const Nav = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false)
   const [toggleMobileMenu, setToggleMobileMenu] = useState(false)
 
-  const [svgFillColor, setSvgFillColor] = useState('')
   const pathname = usePathname()
 
   const handleToggleMobileMenu = () => {
@@ -27,17 +26,6 @@ const Nav = () => {
     setToggleMobileMenu(false)
     document.body.style.overflow = 'unset'
   }
-
-  useEffect(() => {
-    const theme = window.localStorage.getItem('theme')
-    let color = ''
-
-    if (theme === 'dark') color = '#fff'
-    else color = pathname === '/' ? '#fff' : '#000'
-
-    setSvgFillColor(color)
-  }, [pathname])
-
   return (
     <nav
       className={`flex justify-between w-full transition-all fixed top-0 z-50 ${
@@ -84,27 +72,31 @@ const Nav = () => {
         <div className='relative flex items-center justify-end w-full gap-10'>
           <Link
             href='/#about-us'
-            className={`font-bold text-black dark:text-white ${
-              currentRoute === '/about-us' &&
-              'underline underline-offset-[12px]'
-            }`}
+            className={`
+              font-bold
+              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
+              ${ currentRoute === '/about-us' && 'underline underline-offset-[12px]'}
+            `}
           >
             About Us
           </Link>
           <Link
             href='/#opinions'
-            className={`font-bold text-black dark:text-white ${
-              currentRoute === '/opinions' &&
-              'underline underline-offset-[12px]'
-            }`}
+            className={`
+              font-bold
+              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
+              ${ currentRoute === '/opinions' && 'underline underline-offset-[12px]'}
+            `}
           >
             Opinions
           </Link>
           <Link
             href='/blogs'
-            className={`font-bold text-black dark:text-white ${
-              currentRoute === '/blogs' && 'underline underline-offset-[12px]'
-            }`}
+            className={`
+              font-bold
+              ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
+              ${ currentRoute === '/blogs' && 'underline underline-offset-[12px]'}
+            `}
           >
             Blog
           </Link>
@@ -151,7 +143,12 @@ const Nav = () => {
             <button
               type='button'
               onClick={() => signIn('google')}
-              className='text-base font-bold text-black dark:text-white leading-[150%] bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+              className={`
+                text-base font-bold leading-[150%] 
+                bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow 
+                transition-[background-color] ease-in-out
+                ${ currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'}
+              `}
             >
               Get access
             </button>

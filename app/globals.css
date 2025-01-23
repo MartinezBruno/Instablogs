@@ -118,7 +118,8 @@ textarea {
 .dark .hamburger > .path {
   @apply stroke-white;
 }
-.dark #site-logo > .path {
+.dark #site-logo > .path,
+.homepage #site-logo > .path {
   @apply fill-white
 }
 
