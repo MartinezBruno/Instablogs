@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-mulish: 'Mulish';
+  --font-pt_serif: 'PT Serif';
+
+  --color-black: '#25313C';
+  --color-yellow: '#FBB500';
+  --color-blue: '#5A4FF3';
+  --color-gray: '#BBC8D4';
+  --color-text_gray: '#6D7D8B';
+  --color-purple: '#9747FF';
+}
 
 * {
   font-family: var(--font-mulish);
@@ -62,7 +72,7 @@ textarea {
 }
 
 .paragraph {
-  @apply text-lg font-semibold leading-normal tracking-[163.15%] text-black;
+  @apply text-lg font-semibold leading-normal tracking-[1.5%] text-black;
 }
 
 .dark .heading1,
