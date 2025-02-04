@@ -5,10 +5,19 @@ const nextConfig = {
     ignoreDuringBuilds: true
   },
   images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'khqlvuznkpdsactdscrc.supabase.co',
-      'firebasestorage.googleapis.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'khqlvuznkpdsactdscrc.supabase.co'
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com'
+      }
     ]
   },
   webpack(config) {
