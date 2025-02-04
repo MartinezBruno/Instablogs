@@ -152,7 +152,7 @@ const CreateBlogForm = ({ user }) => {
             type='text'
             name='title'
             placeholder='Title'
-            className='border p-3 w-full dark:bg-black dark:text-white dark:placeholder:text-white dark:border-[rgb(229,231,235)]'
+            className='!border p-3 w-full dark:bg-black dark:text-white dark:placeholder:text-white dark:border-[rgb(229,231,235)]'
             onChange={handleOnChange}
             value={blog.title}
           />

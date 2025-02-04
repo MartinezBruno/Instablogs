@@ -98,7 +98,7 @@ const Footer = () => {
               <label className={styles.column_link}>Subscribe to our newsletter</label>
               <input
                 type='email'
-                className='py-[6.5px] px-2 border-[2px] border-yellow rounded placeholder:text-yellow dark:placeholder:text-purple focus:outline-none focus:border-blue'
+                className='py-[6.5px] px-2 border-[2px] border-yellow rounded placeholder:text-yellow dark:placeholder:text-white dark:!border-purple focus:outline-none focus:border-blue'
                 placeholder='Email'
               />
             </form>

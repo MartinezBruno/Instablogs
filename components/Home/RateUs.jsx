@@ -7,7 +7,6 @@ const getReviews = async () => {
     // cache: 'no-cache'
   })
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Error fetching reviews')
   }
   const data = await res.json()

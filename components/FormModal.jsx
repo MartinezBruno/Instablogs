@@ -45,7 +45,7 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
                   type='text'
                   name='fullname'
                   id='fullname'
-                  className='bg-gray-50 dark:bg-[#DADADA57] border border-gray-300 text-gray-900 dark:text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
+                  className='bg-gray-50 dark:bg-[#DADADA57] border-2 border-gray-300 text-gray-900 dark:!text-white dark:border-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
                   autoComplete='off'
                   value={userInfo.fullname}
                   onChange={handleChange}
