@@ -18,15 +18,17 @@ export const authOptions = {
             email: profile.email
           }
         })
+        const userName = profile.name.replace(' ', '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        const userNameIsTaken = await prisma.user.findUnique({
+          where: {
+            username: userName
+          }
+        })
         if (!userExists) {
           await prisma.user.create({
             data: {
               email: profile.email,
-              username: profile.name
-                .replace(' ', '')
-                .toLowerCase()
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, ''),
+              username: userNameIsTaken ? `${userName}${Math.floor(Math.random() * 1000)}` : userName,
               fullname: profile.name,
               image: profile.picture
             }
