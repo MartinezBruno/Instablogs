@@ -26,7 +26,7 @@ const Hero = () => {
             <input
               type='email'
               placeholder='Email'
-              className='py-[13px] px-4 border-[2px] border-[rgba(11,8,2,0.33)] rounded placeholder:text-black focus:outline-none focus:border-blue bg-white'
+              className='py-[13px] px-4 border-[2px] border-[rgba(11,8,2,0.33)] rounded placeholder:text-black focus:outline-none focus:border-blue bg-white dark:placeholder:text-white'
             />
             <button
               type='submit'

@@ -4,7 +4,7 @@ const FormModal = ({ closeModal, handleChange, handleSubmit, userInfo }) => {
       id='authentication-modal'
       className='fixed inset-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto h-[calc(100%-1rem)] max-h-full bg-transparent/25 dark:bg-transparent/40 flex justify-center items-center'
     >
-      <div className="fixed inset-0 content-[' ']" onClick={closeModal} />
+      <div className="fixed inset-0 content-[''] bg-black/50" onClick={closeModal} />
       <div className='relative w-full max-w-md max-h-full'>
         <div className='relative bg-white rounded-lg shadow dark:bg-[#000000]'>
           <button
