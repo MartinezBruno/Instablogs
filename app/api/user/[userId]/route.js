@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 export const PATCH = async (request, { params }) => {
   try {
     // get the user id from params and update there biography or other details depending on the request body
-    const { userId } = params
+    const { userId } = await params
     const body = await request.json()
     const user = await prisma.user.update({
       where: {
@@ -25,7 +25,7 @@ export const PATCH = async (request, { params }) => {
 
 export const GET = async (request, { params }) => {
   try {
-    const { userId } = params
+    const { userId } = await params
     const user = await prisma.user.findUnique({
       where: {
         username: userId

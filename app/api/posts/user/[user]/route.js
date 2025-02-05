@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export const GET = async (request, { params }) => {
   try {
-    const { user: userName } = params
+    const { user: userName } = await params
     if (!userName) return NextResponse.error(new Error('Username not provided'))
 
     const user = await prisma.user.findUnique({
