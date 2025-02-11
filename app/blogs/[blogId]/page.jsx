@@ -3,7 +3,7 @@ import BlogDetail from './BlogDetail'
 import PostBlogComment from './PostBlogComment'
 
 const page = async ({ params }) => {
-  const { blogId } = params
+  const { blogId } = await params
   return (
     <section className='c-container !pt-36'>
       <BlogDetail blogId={blogId} />
