@@ -41,7 +41,11 @@ model Comment {
   authorId  String
   postId    String
   Post      Post     @relation(fields: [postId], references: [id])
+  replies   Comment[] @relation("CommentReplies")
+  parentId  String?
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
+
 
 model Review {
   id        String   @id @default(uuid()) @map("_id")
