@@ -11,7 +11,7 @@ export const GET = async (request, { params }) => {
     })
     if (!comments) return NextResponse.error(new Error('Comments not found'))
     const commentWithAuthorData = await Promise.all(
-      comments.map(async comment => {
+      comments.map(async (comment) => {
         const author = await prisma.user.findUnique({
           where: {
             id: comment.authorId
@@ -29,6 +29,7 @@ export const GET = async (request, { params }) => {
         }
       })
     )
+
     return NextResponse.json(commentWithAuthorData)
   } catch (error) {
     console.error(error)
@@ -38,7 +39,7 @@ export const GET = async (request, { params }) => {
 
 export const POST = async (request, { params }) => {
   try {
-    const { postId } = params
+    const { postId } = await params
     const body = await request.json()
     const { content, email } = body
 
