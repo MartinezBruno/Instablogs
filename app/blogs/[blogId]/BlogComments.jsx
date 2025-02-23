@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/app/services/config'
+import { REM } from 'next/font/google'
 import Link from 'next/link'
 
 const getBlogComments = async (blogId) => {
@@ -21,28 +22,25 @@ const BlogComments = async ({ blogId }) => {
       {comments.length >= 1 ? (
         <div className='mx-auto mt-5 flex w-full flex-col items-start justify-center gap-3 transition-all duration-300 sm:px-14 md:px-28 lg:w-3/4'>
           <h3 className='text-2xl font-bold dark:text-white'>Comments</h3>
-          <div className='w-full border border-gray-200 dark:border-white'>
-            {comments.map((comment) => {
+          <div className='w-full'>
+            {comments.map((comment, index) => {
               const formattedComment = JSON.stringify(
                 comment.content.replace(/\n/g, '<br/>')
               )
               const replies = comment.replies
 
+              console.log(replies)
+
               return (
                 <div key={comment.id} className='w-full'>
                   {/* Main comment */}
-                  <figure className='flex flex-col items-start justify-center rounded-t-lg border-b bg-white p-8 text-center md:rounded-t-none md:rounded-tl-lg dark:border-b-white dark:bg-[#000000EB]'>
-                    <blockquote className='mb-4 text-gray-500 lg:mb-8 dark:text-white'>
-                      <p
-                        className='my-4 w-full text-start'
-                        style={{ wordBreak: 'break-word' }}
-                        dangerouslySetInnerHTML={{
-                          __html: JSON.parse(formattedComment)
-                        }}
-                      />
-                    </blockquote>
+
+                  {/* text-centerdark:border-white flex flex-col items-start justify-center border border-b-0 bg-white p-8 dark:bg-[#000000EB] */}
+                  <figure
+                    className={`flex flex-col items-start justify-center border-2 bg-white p-8 text-center dark:border-white dark:bg-[#000000EB] ${replies.length === 0 ? 'border-b-0' : ''} ${comments.length === index + 1 ? '!border-b-2' : ''} `}
+                  >
                     <figcaption
-                      className='flex w-full flex-wrap items-end justify-end min-[460px]:justify-between'
+                      className='flex w-full flex-wrap items-center justify-end min-[460px]:justify-between'
                       id='user_comment'
                     >
                       <Link href={`/profile/${comment.author.username}`}>
@@ -66,23 +64,29 @@ const BlogComments = async ({ blogId }) => {
                         {new Date(comment.createdAt).toDateString()}
                       </span>
                     </figcaption>
+                    <blockquote className='mb-4 text-gray-500 lg:mb-8 dark:text-white'>
+                      <p
+                        className='my-4 w-full text-start'
+                        style={{ wordBreak: 'break-word' }}
+                        dangerouslySetInnerHTML={{
+                          __html: JSON.parse(formattedComment)
+                        }}
+                      />
+                    </blockquote>
                   </figure>
 
                   {/* Replies */}
-                  <div className='ml-8 border-l pl-4'>
-                    {replies.map((reply) => {
+                  <div className='ml-8 pl-4'>
+                    {replies.map((reply, index) => {
                       const formattedReply = JSON.stringify(
                         reply.content.replace(/\n/g, '<br/>')
                       )
                       return (
                         <figure
                           key={reply.id}
-                          className='mt-4 flex flex-col space-y-2'
+                          className={`flex flex-col space-y-2 border-2 border-t-0 p-8 dark:border-white dark:bg-[#000000EB] ${replies.length === index + 1 ? 'border-b-0' : ''}`}
                         >
-                          <blockquote className='text-gray-500 dark:text-white'>
-                            <p className='my-2'>{formattedReply}</p>
-                          </blockquote>
-                          <figcaption className='flex items-center space-x-3'>
+                          <figcaption className='flex w-full flex-wrap items-center justify-end min-[460px]:justify-between'>
                             <Link href={`/profile/${reply.author.username}`}>
                               <div className='flex flex-wrap items-center space-x-3'>
                                 <img
@@ -104,6 +108,9 @@ const BlogComments = async ({ blogId }) => {
                               {new Date(reply.createdAt).toDateString()}
                             </span>
                           </figcaption>
+                          <blockquote className='text-gray-500 dark:text-white'>
+                            <p className='my-2'>{formattedReply}</p>
+                          </blockquote>
                         </figure>
                       )
                     })}
