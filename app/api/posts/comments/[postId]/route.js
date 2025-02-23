@@ -5,11 +5,12 @@ export const GET = async (request, { params }) => {
   try {
     const { postId } = await params
     const comments = await prisma.comment.findMany({
-      where: {
-        postId
-      }
+      where: { postId },
+      orderBy: { createdAt: 'asc' }
     })
-    if (!comments) return NextResponse.error(new Error('Comments not found'))
+    if (!comments.length)
+      return NextResponse.error(new Error('Comments not found'))
+
     const commentWithAuthorData = await Promise.all(
       comments.map(async (comment) => {
         const author = await prisma.user.findUnique({
@@ -25,12 +26,27 @@ export const GET = async (request, { params }) => {
         })
         return {
           ...comment,
-          author
+          author,
+          replies: []
         }
       })
     )
 
-    return NextResponse.json(commentWithAuthorData)
+    const commentMap = new Map()
+    commentWithAuthorData.forEach((comment) => {
+      commentMap.set(comment.id, comment)
+    })
+    const rootComments = []
+    commentWithAuthorData.forEach((comment) => {
+      if (comment.parentId) {
+        const parent = commentMap.get(comment.parentId)
+        if (parent) parent.replies.push(comment)
+      } else {
+        rootComments.push(comment)
+      }
+    })
+
+    return NextResponse.json(rootComments)
   } catch (error) {
     console.error(error)
     return NextResponse.json({ error }, { status: 404 })
