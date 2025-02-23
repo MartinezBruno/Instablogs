@@ -35,7 +35,6 @@ const BlogComments = async ({ blogId }) => {
                 <div key={comment.id} className='w-full'>
                   {/* Main comment */}
 
-                  {/* text-centerdark:border-white flex flex-col items-start justify-center border border-b-0 bg-white p-8 dark:bg-[#000000EB] */}
                   <figure
                     className={`flex flex-col items-start justify-center border-2 bg-white p-8 text-center dark:border-white dark:bg-[#000000EB] ${replies.length === 0 ? 'border-b-0' : ''} ${comments.length === index + 1 ? '!border-b-2' : ''} `}
                   >
