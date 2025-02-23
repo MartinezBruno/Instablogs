@@ -70,38 +70,43 @@ const BlogComments = async ({ blogId }) => {
 
                   {/* Replies */}
                   <div className='ml-8 border-l pl-4'>
-                    {replies.map((reply) => (
-                      <figure
-                        key={reply.id}
-                        className='mt-4 flex flex-col space-y-2'
-                      >
-                        <blockquote className='text-gray-500 dark:text-white'>
-                          <p className='my-2'>{reply.content}</p>
-                        </blockquote>
-                        <figcaption className='flex items-center space-x-3'>
-                          <Link href={`/profile/${reply.author.username}`}>
-                            <div className='flex flex-wrap items-center space-x-3'>
-                              <img
-                                className='h-7 w-7 rounded-full'
-                                src={reply.author.image}
-                                alt='profile'
-                              />
-                              <div className='text-end font-medium min-[460px]:text-left'>
-                                <p className='text-sm dark:text-white'>
-                                  {reply.author.fullname ?? 'Unknown author'}
-                                </p>
-                                <span className='text-xs text-gray-500 dark:text-white'>
-                                  {reply.author.position ?? ''}
-                                </span>
+                    {replies.map((reply) => {
+                      const formattedReply = JSON.stringify(
+                        reply.content.replace(/\n/g, '<br/>')
+                      )
+                      return (
+                        <figure
+                          key={reply.id}
+                          className='mt-4 flex flex-col space-y-2'
+                        >
+                          <blockquote className='text-gray-500 dark:text-white'>
+                            <p className='my-2'>{formattedReply}</p>
+                          </blockquote>
+                          <figcaption className='flex items-center space-x-3'>
+                            <Link href={`/profile/${reply.author.username}`}>
+                              <div className='flex flex-wrap items-center space-x-3'>
+                                <img
+                                  className='h-7 w-7 rounded-full'
+                                  src={reply.author.image}
+                                  alt='profile'
+                                />
+                                <div className='text-end font-medium min-[460px]:text-left'>
+                                  <p className='text-sm dark:text-white'>
+                                    {reply.author.fullname ?? 'Unknown author'}
+                                  </p>
+                                  <span className='text-xs text-gray-500 dark:text-white'>
+                                    {reply.author.position ?? ''}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                          </Link>
-                          <span className='text-xs text-gray-500 dark:text-white'>
-                            {new Date(reply.createdAt).toDateString()}
-                          </span>
-                        </figcaption>
-                      </figure>
-                    ))}
+                            </Link>
+                            <span className='text-xs text-gray-500 dark:text-white'>
+                              {new Date(reply.createdAt).toDateString()}
+                            </span>
+                          </figcaption>
+                        </figure>
+                      )
+                    })}
                   </div>
                 </div>
               )
