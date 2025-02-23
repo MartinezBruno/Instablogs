@@ -41,7 +41,7 @@ export const POST = async (request, { params }) => {
   try {
     const { postId } = await params
     const body = await request.json()
-    const { content, email } = body
+    const { content, email, parentCommentId } = body
 
     const user = await prisma.user.findUnique({
       where: {
@@ -50,18 +50,46 @@ export const POST = async (request, { params }) => {
     })
     if (!user) return NextResponse.error(new Error('User not found'))
 
-    const comment = await prisma.comment.create({
-      data: {
-        content,
-        postId,
-        authorId: user.id
-      }
-    })
-    if (!comment) return NextResponse.error(new Error('Comment not created'))
+    if (!parentCommentId) {
+      const comment = await prisma.comment.create({
+        data: {
+          content,
+          postId,
+          authorId: user.id
+        }
+      })
+      if (!comment) return NextResponse.error(new Error('Comment not created'))
 
-    return NextResponse.json(comment)
+      return NextResponse.json(comment)
+    } else {
+      const parentComment = await prisma.comment.findUnique({
+        where: {
+          id: parentCommentId
+        }
+      })
+      if (!parentComment)
+        return NextResponse.error(new Error('Parent comment not found'))
+
+      const reply = await prisma.comment.update({
+        where: {
+          id: parentCommentId
+        },
+        data: {
+          replies: {
+            create: {
+              content,
+              postId,
+              authorId: user.id
+            }
+          }
+        }
+      })
+      if (!reply) return NextResponse.error(new Error(`Couldn't create reply`))
+
+      return NextResponse.json(reply)
+    }
   } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error }, { status: 404 })
+    console.error(error.message)
+    return NextResponse.json({ error: error.message }, { status: 404 })
   }
 }
