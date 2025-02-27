@@ -1,7 +1,7 @@
 import prisma from '@/lib/prismadb'
 import { NextResponse } from 'next/server'
 
-export const POST = async request => {
+export const POST = async (request) => {
   try {
     const body = await request.json()
     const { content, authorId, rating } = body
@@ -11,7 +11,8 @@ export const POST = async request => {
         id: authorId
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     const existingReview = await prisma.review.findFirst({
       where: {
@@ -41,7 +42,11 @@ export const POST = async request => {
       })
     }
 
-    if (!review) return NextResponse.error(new Error('Review not created or updated'))
+    if (!review)
+      return NextResponse.json(
+        { error: 'Review not created or updated' },
+        { status: 404 }
+      )
 
     return NextResponse.json(review)
   } catch (error) {
@@ -54,7 +59,7 @@ export const GET = async () => {
   try {
     const reviews = await prisma.review.findMany()
     const reviewsWithAuthorData = await Promise.all(
-      reviews.map(async review => {
+      reviews.map(async (review) => {
         const author = await prisma.user.findUnique({
           where: {
             id: review.authorId
@@ -75,7 +80,8 @@ export const GET = async () => {
         }
       })
     )
-    if (!reviews) return NextResponse.error(new Error('Reviews not found'))
+    if (!reviews)
+      return NextResponse.json({ error: 'Reviews not found' }, { status: 404 })
     return NextResponse.json(reviewsWithAuthorData)
   } catch (error) {
     console.error(error)

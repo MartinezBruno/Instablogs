@@ -8,7 +8,7 @@ export const GET = async () => {
     }
   })
   const postsWithAuthorData = await Promise.all(
-    posts.map(async post => {
+    posts.map(async (post) => {
       const author = await prisma.user.findUnique({
         where: {
           id: post.authorId
@@ -29,7 +29,7 @@ export const GET = async () => {
   return NextResponse.json(postsWithAuthorData)
 }
 
-export const POST = async request => {
+export const POST = async (request) => {
   try {
     const body = await request.json()
     const { title, content, email, image } = body
@@ -39,7 +39,8 @@ export const POST = async request => {
         email
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     const post = await prisma.post.create({
       data: {
