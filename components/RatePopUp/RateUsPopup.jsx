@@ -24,17 +24,17 @@ const RateUsPopup = () => {
   const stars = useRef(null)
   const userId = session?.user.id
 
-  const handleStars = e => {
+  const handleStars = (e) => {
     const star = e.target.closest('label')
     const value = star.getAttribute('data-value')
     setRateData({ ...rateData, stars: value })
   }
 
-  const handleOpinion = e => {
+  const handleOpinion = (e) => {
     setRateData({ ...rateData, opinion: e.target.value })
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const { stars, opinion } = rateData
@@ -56,7 +56,10 @@ const RateUsPopup = () => {
 
     const formattedDate = `${day}/${month}/${year}`
 
-    window.localStorage.setItem('rateUs', JSON.stringify({ rateDate: formattedDate }))
+    window.localStorage.setItem(
+      'rateUs',
+      JSON.stringify({ rateDate: formattedDate })
+    )
     setPopupOpen(false)
 
     router.refresh()
@@ -72,7 +75,10 @@ const RateUsPopup = () => {
 
     const formattedDate = `${day}/${month}/${year}`
 
-    window.localStorage.setItem('rateUs', JSON.stringify({ rateDate: formattedDate }))
+    window.localStorage.setItem(
+      'rateUs',
+      JSON.stringify({ rateDate: formattedDate })
+    )
     setPopupOpen(false)
   }
 
@@ -80,22 +86,40 @@ const RateUsPopup = () => {
     setPopupOpen(show)
   }, [show])
 
-  if (!popupOpen) return null
+  if (!popupOpen || !session?.user) return null
 
   return (
     <>
       {popupOpen && (
-        <div className='fixed z-10 grid w-full h-full -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 place-items-center bg-black/40'>
-          <div className='flex flex-col items-center justify-center p-8 mx-5 gap-3 bg-white dark:bg-[#000] h-fit w-fit border border-[#000] rounded-[20px]'>
-            <h5 className='text-4xl font-semibold leading-10 dark:text-white'>Rate us!</h5>
-            <p className='text-lg text-center dark:text-white'>Your opinion is important for InstaBlogs!</p>
-            <form onSubmit={handleSubmit} className='grid gap-6 place-items-center w-fit'>
-              <RatingInput stars={stars} starsValue={rateData.stars} handleStars={handleStars} />
+        <div className='fixed top-1/2 left-1/2 z-10 grid h-full w-full -translate-x-1/2 -translate-y-1/2 place-items-center bg-black/40'>
+          <div className='mx-5 flex h-fit w-fit flex-col items-center justify-center gap-3 rounded-[20px] border border-[#000] bg-white p-8 dark:bg-[#000]'>
+            <h5 className='text-4xl leading-10 font-semibold dark:text-white'>
+              Rate us!
+            </h5>
+            <p className='text-center text-lg dark:text-white'>
+              Your opinion is important for InstaBlogs!
+            </p>
+            <form
+              onSubmit={handleSubmit}
+              className='grid w-fit place-items-center gap-6'
+            >
+              <RatingInput
+                stars={stars}
+                starsValue={rateData.stars}
+                handleStars={handleStars}
+              />
               <OpinionInput handleOpinion={handleOpinion} />
-              <button type='submit' className='w-full !py-2 btn_profile !font-extrabold'>
+              <button
+                type='submit'
+                className='btn_profile w-full !py-2 !font-extrabold'
+              >
                 Send
               </button>
-              <button type='button' className='font-extrabold underline text-[#94A3B1]' onClick={skipRating}>
+              <button
+                type='button'
+                className='font-extrabold text-[#94A3B1] underline'
+                onClick={skipRating}
+              >
                 Skip
               </button>
             </form>
