@@ -9,7 +9,7 @@ export const GET = async (request, { params }) => {
       orderBy: { createdAt: 'asc' }
     })
     if (!comments.length)
-      return NextResponse.error(new Error('Comments not found'))
+      return NextResponse.json({ error: 'Comments not found' }, { status: 404 })
 
     const commentWithAuthorData = await Promise.all(
       comments.map(async (comment) => {
@@ -64,7 +64,8 @@ export const POST = async (request, { params }) => {
         email
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     if (!parentCommentId) {
       const comment = await prisma.comment.create({
@@ -74,7 +75,11 @@ export const POST = async (request, { params }) => {
           authorId: user.id
         }
       })
-      if (!comment) return NextResponse.error(new Error('Comment not created'))
+      if (!comment)
+        return NextResponse.json(
+          { error: 'Comment not created' },
+          { status: 404 }
+        )
 
       return NextResponse.json(comment)
     } else {
@@ -84,7 +89,10 @@ export const POST = async (request, { params }) => {
         }
       })
       if (!parentComment)
-        return NextResponse.error(new Error('Parent comment not found'))
+        return NextResponse.json(
+          { error: 'Parent comment not found' },
+          { status: 404 }
+        )
 
       const reply = await prisma.comment.update({
         where: {
@@ -100,7 +108,11 @@ export const POST = async (request, { params }) => {
           }
         }
       })
-      if (!reply) return NextResponse.error(new Error(`Couldn't create reply`))
+      if (!reply)
+        return NextResponse.json(
+          { error: 'Reply not created' },
+          { status: 404 }
+        )
 
       return NextResponse.json(reply)
     }

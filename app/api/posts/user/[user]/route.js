@@ -4,7 +4,11 @@ import { NextResponse } from 'next/server'
 export const GET = async (request, { params }) => {
   try {
     const { user: userName } = await params
-    if (!userName) return NextResponse.error(new Error('Username not provided'))
+    if (!userName)
+      return NextResponse.json(
+        { error: 'Username not provided' },
+        { status: 400 }
+      )
 
     const user = await prisma.user.findUnique({
       where: {
@@ -16,7 +20,8 @@ export const GET = async (request, { params }) => {
         image: true
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     // Get all posts for the user
     const posts = await prisma.post.findMany({
@@ -27,9 +32,10 @@ export const GET = async (request, { params }) => {
         createdAt: 'desc'
       }
     })
-    if (!posts) return NextResponse.error(new Error('Post not found'))
+    if (!posts)
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 
-    const postsWithAuthorData = posts.map(post => {
+    const postsWithAuthorData = posts.map((post) => {
       return {
         ...post,
         authorImage: user.image,

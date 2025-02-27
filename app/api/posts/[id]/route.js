@@ -9,7 +9,8 @@ export const GET = async (_request, { params }) => {
         id
       }
     })
-    if (!post) return NextResponse.error(new Error('Post not found'))
+    if (!post)
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 
     const author = await prisma.user.findUnique({
       where: {
@@ -22,7 +23,8 @@ export const GET = async (_request, { params }) => {
         position: true
       }
     })
-    if (!author) return NextResponse.error(new Error('Author not found'))
+    if (!author)
+      return NextResponse.json({ error: 'Author not found' }, { status: 404 })
 
     const response = {
       ...post,
@@ -47,7 +49,8 @@ export const DELETE = async (_request, { params }) => {
         id
       }
     })
-    if (!post) return NextResponse.error(new Error('Post not found'))
+    if (!post)
+      return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 
     await prisma.comment.deleteMany({
       where: {
@@ -62,8 +65,8 @@ export const DELETE = async (_request, { params }) => {
 
     return NextResponse.json({ message: 'Post deleted' })
   } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error }, { status: 404 })
+    console.error(error.message)
+    return NextResponse.json({ error: error.message }, { status: 404 })
   }
 }
 
@@ -82,8 +85,9 @@ export const PUT = async (request, { params }) => {
       }
     })
     if (!post)
-      return NextResponse.error(
-        new Error('Unable to update post content, please try again later')
+      return NextResponse.json(
+        { error: 'Unable to update post content, please try again later' },
+        { status: 404 }
       )
 
     return NextResponse.json({ message: 'Post updated' })

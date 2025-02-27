@@ -14,7 +14,8 @@ export const PATCH = async (request, { params }) => {
         ...body
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     return NextResponse.json(user)
   } catch (error) {
@@ -31,7 +32,8 @@ export const GET = async (request, { params }) => {
         username: userId
       }
     })
-    if (!user) return NextResponse.error(new Error('User not found'))
+    if (!user)
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
 
     return NextResponse.json(user)
   } catch (error) {
