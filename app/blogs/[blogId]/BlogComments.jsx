@@ -1,6 +1,9 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth/next'
+
 import { BASE_URL } from '@/app/services/config'
-import { REM } from 'next/font/google'
 import Link from 'next/link'
+import { BlogCommentReply } from './BlogCommentReply'
 
 const getBlogComments = async (blogId) => {
   try {
@@ -16,6 +19,7 @@ const getBlogComments = async (blogId) => {
 
 const BlogComments = async ({ blogId }) => {
   const comments = await getBlogComments(blogId)
+  const session = await getServerSession(authOptions)
 
   return (
     <>
@@ -28,8 +32,6 @@ const BlogComments = async ({ blogId }) => {
                 comment.content.replace(/\n/g, '<br/>')
               )
               const replies = comment.replies
-
-              console.log(replies)
 
               return (
                 <div key={comment.id} className='w-full'>
@@ -72,6 +74,13 @@ const BlogComments = async ({ blogId }) => {
                         }}
                       />
                     </blockquote>
+                    {session?.user && (
+                      <BlogCommentReply
+                        blogId={blogId}
+                        parentId={comment.id}
+                        userData={session.user}
+                      />
+                    )}
                   </figure>
 
                   {/* Replies */}
@@ -83,7 +92,7 @@ const BlogComments = async ({ blogId }) => {
                       return (
                         <figure
                           key={reply.id}
-                          className={`flex flex-col space-y-2 border-2 border-t-0 p-8 dark:border-white dark:bg-[#000000EB] ${replies.length === index + 1 ? 'border-b-0' : ''}`}
+                          className={`flex flex-col space-y-2 border-2 border-t-0 p-8 dark:border-white dark:bg-[#000000EB] ${replies.length > 1 && replies.length === index + 1 ? 'border-b-0' : ''}`}
                         >
                           <figcaption className='flex w-full flex-wrap items-center justify-end min-[460px]:justify-between'>
                             <Link href={`/profile/${reply.author.username}`}>
@@ -108,7 +117,12 @@ const BlogComments = async ({ blogId }) => {
                             </span>
                           </figcaption>
                           <blockquote className='text-gray-500 dark:text-white'>
-                            <p className='my-2'>{formattedReply}</p>
+                            <p
+                              className='my-2'
+                              dangerouslySetInnerHTML={{
+                                __html: JSON.parse(formattedReply)
+                              }}
+                            />
                           </blockquote>
                         </figure>
                       )

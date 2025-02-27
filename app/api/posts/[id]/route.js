@@ -52,11 +52,22 @@ export const DELETE = async (_request, { params }) => {
     if (!post)
       return NextResponse.json({ error: 'Post not found' }, { status: 404 })
 
-    await prisma.comment.deleteMany({
-      where: {
-        postId: id
-      }
+    await prisma.$transaction(async (prisma) => {
+      await prisma.comment.deleteMany({
+        where: {
+          parentId: {
+            not: null // This will only delete replies
+          }
+        }
+      })
+
+      await prisma.comment.deleteMany({
+        where: {
+          postId: id
+        }
+      })
     })
+
     await prisma.post.delete({
       where: {
         id

@@ -29,7 +29,7 @@ const HorizontalDots = ({ blogId }) => {
           timer: 5000,
           timerProgressBar: true
         }).then(() => {
-          router.refresh()
+          window.location.reload()
         })
       }
     })
@@ -59,11 +59,11 @@ const HorizontalDots = ({ blogId }) => {
         />
       </svg>
       {showMenu && (
-        <div className='absolute right-6 top-9 bg-white dark:bg-[#000000EB] flex flex-col'>
-          <span className='cursor-pointer dropdown_link' onClick={handleEdit}>
+        <div className='absolute top-9 right-6 flex flex-col bg-white dark:bg-[#000000EB]'>
+          <span className='dropdown_link cursor-pointer' onClick={handleEdit}>
             Edit
           </span>
-          <span className='cursor-pointer dropdown_link' onClick={handleDelete}>
+          <span className='dropdown_link cursor-pointer' onClick={handleDelete}>
             Delete
           </span>
         </div>
