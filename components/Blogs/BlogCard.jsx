@@ -8,28 +8,32 @@ const BlogCard = ({ blog, userId }) => {
   const { data: session } = useSession()
 
   return (
-    <article className='rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#000000] dark:shadow-[0px_4px_30px_0px_#00000040]'>
-      {session?.user?.id === userId && userId !== undefined && <HorizontalDots blogId={blog.id} />}
+    <article className='swiper-card rounded-lg shadow-[0px_4px_4px_rgba(0,0,0,0.25)] dark:bg-[#000000] dark:shadow-[0px_4px_30px_0px_#00000040]'>
+      {session?.user?.id === userId && userId !== undefined && (
+        <HorizontalDots blogId={blog.id} />
+      )}
       {blog.banner && (
         <Link href={`/blogs/${blog.id}`}>
-          <div className='overflow-hidden rounded-lg flex-[1_0_100%] flex'>
+          <div className='flex flex-[1_0_100%] overflow-hidden rounded-lg'>
             <Image
               src={blog.banner}
               width={400}
               height={400}
               loading='lazy'
               alt={blog.title}
-              className='object-cover object-center w-full h-full blog-img aspect-square'
+              className='blog-img aspect-square h-full w-full object-cover object-center'
             />
           </div>
         </Link>
       )}
       <div className='p-5'>
-        <h2 className='text-xl lg:text-2xl h-[2.6em] truncate whitespace-normal sm:whitespace-nowrap mb-2 dark:text-white'>
+        <h2 className='mb-2 h-[2.6em] truncate text-xl whitespace-normal sm:whitespace-nowrap lg:text-2xl dark:text-white'>
           {blog.title}
         </h2>
-        <p className={`${styles.blog_content} dark:text-white`}>{blog.content}</p>
-        <div className='flex items-center justify-start gap-2 mt-11'>
+        <p className={`${styles.blog_content} dark:text-white`}>
+          {blog.content}
+        </p>
+        <div className='mt-11 flex items-center justify-start gap-2'>
           <img
             src={blog.authorImage ?? 'https://via.placeholder.com/150'}
             width={40}
@@ -37,9 +41,12 @@ const BlogCard = ({ blog, userId }) => {
             alt='user photo'
             className='rounded-full'
           />
-          <span className='text-sm font-semibold text-text_gray dark:text-white'>
+          <span className='text-text_gray text-sm font-semibold dark:text-white'>
             {blog.authorName ?? 'Unknown author'}{' '}
-            <span className='hidden md:inline-block'> | {new Date(blog.createdAt).toDateString()}</span>
+            <span className='hidden md:inline-block'>
+              {' '}
+              | {new Date(blog.createdAt).toDateString()}
+            </span>
           </span>
         </div>
       </div>

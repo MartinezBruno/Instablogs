@@ -1,21 +1,30 @@
-.swiper-button-next, .swiper-button-prev {
+.dark .swiper-pagination-fraction {
+  color: white;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
   width: 41px;
 
   top: unset;
   bottom: 0;
 }
-.swiper-button-next::after, .swiper-button-prev::after {
+.swiper-button-next::after,
+.swiper-button-prev::after {
   content: none;
 }
 
-.swiper-card h2, .swiper-card p {
+.swiper-card h2,
+.swiper-card p {
   transition: opacity 0.5s;
 }
 .swiper-card .blog-img {
   transition: transform 0.5s;
 }
-.swiper-card:hover h2, .swiper-card:hover p {
-  opacity: 50%;
+.swiper-card:hover h2,
+.swiper-card:hover p,
+.swiper-card:hover span {
+  opacity: 80%;
 }
 .swiper-card:hover .blog-img {
   transform: scale(1.1);

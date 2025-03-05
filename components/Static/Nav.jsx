@@ -28,13 +28,13 @@ const Nav = () => {
   }
   return (
     <nav
-      className={`flex justify-between w-full transition-all fixed top-0 z-50 ${
+      className={`fixed top-0 z-50 flex w-full justify-between transition-all ${
         pathname === '/' && 'homepage'
       }`}
       id='navbar'
     >
       {/* Desktop nav */}
-      <div className='sm:flex w-full justify-between items-center hidden c-container !py-6'>
+      <div className='c-container hidden w-full items-center justify-between !py-6 sm:flex'>
         <Link href='/' title='Instablogs'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -42,7 +42,7 @@ const Nav = () => {
             height='74'
             viewBox='0 0 187 333'
             fill='none'
-            className='w-full h-auto'
+            className='h-auto w-full'
             id='site-logo'
           >
             <path
@@ -69,54 +69,36 @@ const Nav = () => {
             />
           </svg>
         </Link>
-        <div className='relative flex items-center justify-end w-full gap-10'>
+        <div className='relative flex w-full items-center justify-end gap-10'>
           <Link
             href='/#about-us'
-            className={`
-              font-bold
-              ${
-                currentRoute === '/'
-                  ? 'text-white'
-                  : 'text-black dark:text-white'
-              }
-              ${
-                currentRoute === '/about-us' &&
-                'underline underline-offset-[12px]'
-              }
-            `}
+            className={`font-bold ${
+              currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'
+            } ${
+              currentRoute === '/about-us' &&
+              'underline underline-offset-[12px]'
+            } `}
           >
             About Us
           </Link>
           <Link
             href='/#opinions'
-            className={`
-              font-bold
-              ${
-                currentRoute === '/'
-                  ? 'text-white'
-                  : 'text-black dark:text-white'
-              }
-              ${
-                currentRoute === '/opinions' &&
-                'underline underline-offset-[12px]'
-              }
-            `}
+            className={`font-bold ${
+              currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'
+            } ${
+              currentRoute === '/opinions' &&
+              'underline underline-offset-[12px]'
+            } `}
           >
             Opinions
           </Link>
           <Link
             href='/blogs'
-            className={`
-              font-bold
-              ${
-                currentRoute === '/'
-                  ? 'text-white'
-                  : 'text-black dark:text-white'
-              }
-              ${
-                currentRoute === '/blogs' && 'underline underline-offset-[12px]'
-              }
-            `}
+            className={`font-bold ${
+              currentRoute === '/' ? 'text-white' : 'text-black dark:text-white'
+            } ${
+              currentRoute === '/blogs' && 'underline underline-offset-[12px]'
+            } `}
           >
             Blog
           </Link>
@@ -126,12 +108,12 @@ const Nav = () => {
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className='rounded-full max-w-[40px]'
+                className='max-w-[40px] rounded-full'
                 alt='profile icon'
                 onClick={() => setToggleDropdown((prev) => !prev)}
               />
               {toggleDropdown && (
-                <div className='absolute right-4 top-5 border border-gray-500 bg-white dark:bg-[#000000EB] flex flex-col items-center'>
+                <div className='absolute top-5 right-4 flex flex-col items-center border border-gray-500 bg-white dark:bg-[#000000EB]'>
                   <Link
                     href={`/profile/${session?.user.username}`}
                     className='dropdown_link'
@@ -163,16 +145,11 @@ const Nav = () => {
             <button
               type='button'
               onClick={() => signIn('google')}
-              className={`
-                text-base font-bold leading-[150%]
-                bg-[rgba(255,255,255,0.15)] rounded-[5px] py-2 px-3 hover:bg-yellow dark:hover:bg-purple
-                transition-[background-color] ease-in-out
-                ${
-                  currentRoute === '/'
-                    ? 'text-white'
-                    : 'text-black dark:text-white'
-                }
-              `}
+              className={`hover:bg-yellow dark:hover:bg-purple rounded-[5px] bg-[rgba(255,255,255,0.15)] px-3 py-2 text-base leading-[150%] font-bold transition-[background-color] ease-in-out ${
+                currentRoute === '/'
+                  ? 'text-white'
+                  : 'text-black dark:text-white'
+              } `}
             >
               Get access
             </button>
@@ -181,7 +158,7 @@ const Nav = () => {
       </div>
 
       {/* Mobile Nav */}
-      <div className='relative flex justify-between w-full sm:hidden c-container'>
+      <div className='c-container relative flex w-full justify-between sm:hidden'>
         <div className='my-auto'>
           <Hamburger toggleMenu={handleToggleMobileMenu} />
         </div>
@@ -193,7 +170,7 @@ const Nav = () => {
             viewBox='0 0 187 333'
             fill='none'
             id='site-logo'
-            className='w-auto h-full'
+            className='h-full w-auto'
           >
             <path
               d='M147.911 24.2337H51.4962C40.5325 24.2337 31.6447 31.9881 31.6447 41.5537V266.87C31.6447 276.435 40.5325 284.19 51.4962 284.19H147.911C158.875 284.19 167.762 276.435 167.762 266.87V41.5537C167.762 31.9881 158.875 24.2337 147.911 24.2337Z'
@@ -225,12 +202,12 @@ const Nav = () => {
               src={session?.user.image}
               width={37}
               height={37}
-              className='rounded-full max-w-[40px]'
+              className='max-w-[40px] rounded-full'
               alt='profile icon'
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
-              <div className='absolute flex flex-col bg-white border border-gray-500 right-12 top-14'>
+              <div className='absolute top-14 right-12 flex flex-col border border-gray-500 bg-white dark:bg-[#000000EB]'>
                 <Link
                   href={`/profile/${session?.user.username}`}
                   className='dropdown_link'
@@ -262,7 +239,7 @@ const Nav = () => {
           <button
             type='button'
             onClick={() => signIn('google')}
-            className='text-base font-bold leading-[150%] bg-[rgba(255,255,255,0.15)] text-black dark:text-white rounded-[5px] py-2 px-3 hover:bg-yellow transition-[background-color] ease-in-out'
+            className='hover:bg-yellow rounded-[5px] bg-[rgba(255,255,255,0.15)] px-3 py-2 text-base leading-[150%] font-bold text-black transition-[background-color] ease-in-out dark:text-white'
           >
             Get access
           </button>
