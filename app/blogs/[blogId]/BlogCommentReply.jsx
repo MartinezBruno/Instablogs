@@ -90,14 +90,14 @@ export const BlogCommentReply = ({ parentId, userData, blogId }) => {
                 name='reply'
                 id='reply'
                 placeholder='Say something...'
-                className='h-[105px] w-full border-[2px] p-4 dark:bg-[#000000EB] dark:text-white'
+                className='border-gray h-[54px] w-full border-[2px] p-3 dark:bg-[#000000EB] dark:text-white'
               />
               <span className='dark:text-white'>
                 {charsLeft} / {limitChars}
               </span>
               <button
                 type='submit'
-                className='bg-yellow dark:bg-purple mt-2 rounded-[5px] bg-[rgba(255,255,255,0.15)] px-7 py-2 text-base leading-[150%] font-bold text-white transition-[background-color] ease-in-out hover:opacity-70'
+                className='bg-yellow dark:bg-purple mt-2 rounded-[5px] px-7 py-2 text-base leading-[150%] font-bold text-white transition-[background-color] ease-in-out hover:opacity-70'
               >
                 Send
               </button>
@@ -107,7 +107,7 @@ export const BlogCommentReply = ({ parentId, userData, blogId }) => {
       ) : (
         <button
           onClick={() => setShowReply(true)}
-          className='font-mulish text-sm leading-[150%]'
+          className='font-mulish text-sm leading-[150%] dark:text-white'
         >
           Reply
         </button>
