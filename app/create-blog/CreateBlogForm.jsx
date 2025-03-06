@@ -1,18 +1,18 @@
 'use client'
 
-import { uploadImageAndGetURL } from '@/app/services/firebase.config'
 import Spinner from '@/components/Icons/Spinner'
+import useImageToBase64 from '@/hooks/useImageToBase64'
 import previewImage from '@/public/image-upload-preview.svg'
 import axios from 'axios'
 import Compressor from 'compressorjs'
 import { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
 
-const postBlog = async (blog, image) => {
+const postBlog = async (blog) => {
   try {
     const res = await axios.post('/api/posts', {
       title: blog.title,
-      image,
+      banner: blog.banner,
       content: blog.content,
       email: blog.email
     })
@@ -34,6 +34,7 @@ const CreateBlogForm = ({ user }) => {
     content: '',
     email: user.email
   })
+  const { base64, convertImageToBase64 } = useImageToBase64()
   const [errors, setErrors] = useState([
     {
       title: '',
@@ -51,10 +52,12 @@ const CreateBlogForm = ({ user }) => {
       if (file.size / 1000 / 1000 < 10) {
         return new Compressor(file, {
           quality: 0.6,
-          success(result) {
+          mimeType: 'image/webp',
+          async success(result) {
             const imageUrl = URL?.createObjectURL(result)
+            await convertImageToBase64(result)
             setErrors({ ...errors, banner: false })
-            setBlog({ ...blog, banner: result })
+            setBlog({ ...blog, banner: base64 })
             setPreview(imageUrl)
           }
         })
@@ -70,10 +73,12 @@ const CreateBlogForm = ({ user }) => {
     if (file.size / 1000 / 1000 < 10) {
       return new Compressor(file, {
         quality: 0.6,
-        success(result) {
+        mimeType: 'image/webp',
+        async success(result) {
           const imageUrl = URL?.createObjectURL(result)
+          await convertImageToBase64(result)
           setErrors({ ...errors, banner: false })
-          setBlog({ ...blog, banner: result })
+          setBlog({ ...blog, banner: base64 })
           setPreview(imageUrl)
         }
       })
@@ -107,20 +112,9 @@ const CreateBlogForm = ({ user }) => {
     const errors = handleErrors(blog)
     if (!errors) return setLoading(false)
 
-    const imageUrl = await uploadImageAndGetURL({
-      file: blog.banner,
-      userId: user.id
-    })
-    if (!imageUrl) {
-      alert(
-        'Something went wrong while uploading your image, try again or contact us'
-      )
-      return setLoading(false)
-    }
-    setBlog({ ...blog, banner: imageUrl })
-
-    const post = await postBlog(blog, imageUrl)
+    const post = await postBlog(blog)
     if (!post.id) return alert('Something went wrong')
+
     Swal.fire({
       title: 'Success!',
       text: 'Your blog has been posted',

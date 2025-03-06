@@ -1,5 +1,8 @@
 import prisma from '@/lib/prismadb'
 import { NextResponse } from 'next/server'
+import { uploadImageAndGetURL } from '@/app/services/firebase.config'
+import sharp from 'sharp'
+import { v4 as uuidv4 } from 'uuid'
 
 export const GET = async () => {
   const posts = await prisma.post.findMany({
@@ -32,7 +35,7 @@ export const GET = async () => {
 export const POST = async (request) => {
   try {
     const body = await request.json()
-    const { title, content, email, image } = body
+    const { title, content, email, banner } = body
 
     const user = await prisma.user.findUnique({
       where: {
@@ -41,6 +44,20 @@ export const POST = async (request) => {
     })
     if (!user)
       return NextResponse.json({ error: 'User not found' }, { status: 404 })
+
+    const { fileName, webpBuffer } = await base64toWebp(banner)
+    const image = await uploadImageAndGetURL({
+      file: webpBuffer,
+      fileName,
+      userId: user.id
+    })
+
+    if (!image) {
+      return NextResponse.json(
+        { error: 'Image upload failed' },
+        { status: 500 }
+      )
+    }
 
     const post = await prisma.post.create({
       data: {
@@ -57,4 +74,12 @@ export const POST = async (request) => {
     console.error(error)
     return NextResponse.json({ error }, { status: 404 })
   }
+}
+
+const base64toWebp = async (image) => {
+  const buffer = Buffer.from(image, 'base64')
+  const webpBuffer = await sharp(buffer).webp().toBuffer()
+  const fileName = `blog-${uuidv4()}.webp`
+
+  return { fileName, webpBuffer }
 }

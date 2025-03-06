@@ -28,6 +28,7 @@
     "tailwindcss": "^4.0.8"
   },
   "devDependencies": {
+    "@next/env": "^15.2.1",
     "@next/eslint-plugin-next": "13.4.19",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "18.2.22",
@@ -41,7 +42,9 @@
     "node-fetch": "^3.3.2",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "prisma": "6.3.1"
+    "prisma": "6.3.1",
+    "sharp": "^0.33.5",
+    "uuid": "^11.1.0"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
