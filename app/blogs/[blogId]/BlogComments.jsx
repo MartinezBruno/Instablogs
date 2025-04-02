@@ -3,7 +3,9 @@ import { getServerSession } from 'next-auth/next'
 
 import { BASE_URL } from '@/app/services/config'
 import Link from 'next/link'
+
 import { BlogCommentReply } from './BlogCommentReply'
+import { BlogCommentDelete } from './BlogCommentDelete'
 
 const getBlogComments = async (blogId) => {
   try {
@@ -75,11 +77,20 @@ const BlogComments = async ({ blogId }) => {
                       />
                     </blockquote>
                     {session?.user && (
-                      <BlogCommentReply
-                        blogId={blogId}
-                        parentId={comment.id}
-                        userData={session.user}
-                      />
+                      <div className='flex gap-2'>
+                        <BlogCommentReply
+                          blogId={blogId}
+                          parentId={comment.id}
+                          userData={session.user}
+                        />
+                        {session?.user.id === comment.authorId && (
+                          <BlogCommentDelete
+                            blogId={blogId}
+                            commentId={comment.id}
+                            userData={session.user}
+                          />
+                        )}
+                      </div>
                     )}
                   </figure>
 
@@ -124,6 +135,15 @@ const BlogComments = async ({ blogId }) => {
                               }}
                             />
                           </blockquote>
+                          {session?.user.id === reply.authorId && (
+                            <div>
+                              <BlogCommentDelete
+                                blogId={blogId}
+                                commentId={reply.id}
+                                userData={session.user}
+                              />
+                            </div>
+                          )}
                         </figure>
                       )
                     })}
