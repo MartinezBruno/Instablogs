@@ -1,31 +1,36 @@
 import Close from '@/components/Icons/Close'
 import Link from 'next/link'
 
-const MobileNav = ({ isActive, handleClose, handleClickLink, currentRoute }) => {
+const MobileNav = ({
+  isActive,
+  handleClose,
+  handleClickLink,
+  currentRoute
+}) => {
   return (
     <div
       id='mobile-nav'
-      className={`${isActive ? 'bg-white dark:bg-[#000] z-10 translate-x-0 !duration-500' : '-translate-x-96'} absolute top-0 left-0 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out p-8 w-2/4 h-screen`}
+      className={`${isActive ? 'z-10 translate-x-0 bg-white !duration-500 dark:bg-[#000]' : '-translate-x-96'} absolute top-0 left-0 h-screen w-fit p-8 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out`}
     >
       <Close handleClose={handleClose} />
-      <div className='relative flex flex-col w-full gap-3 px-4 mt-5'>
+      <div className='relative mt-5 flex w-full flex-col gap-3 px-4'>
         <Link
           href='/#about-us'
-          className={`nav-link ${currentRoute === '/about-us' && 'underline underline-offset-[12px] ml-3'}`}
+          className={`nav-link ${currentRoute === '/about-us' && 'ml-3 underline underline-offset-[12px]'}`}
           onClick={handleClickLink}
         >
           About us
         </Link>
         <Link
           href='/#opinions'
-          className={`nav-link ${currentRoute === '/opinions' && 'underline underline-offset-[12px] ml-3'}`}
+          className={`nav-link ${currentRoute === '/opinions' && 'ml-3 underline underline-offset-[12px]'}`}
           onClick={handleClickLink}
         >
           Opinions
         </Link>
         <Link
           href={'/blogs'}
-          className={`nav-link ${currentRoute === '/blogs' && 'underline underline-offset-[12px] ml-3'}`}
+          className={`nav-link ${currentRoute === '/blogs' && 'ml-3 underline underline-offset-[12px]'}`}
           onClick={handleClickLink}
         >
           Blog
@@ -38,7 +43,7 @@ const MobileNav = ({ isActive, handleClose, handleClickLink, currentRoute }) => 
           height='74'
           viewBox='0 0 187 333'
           fill='none'
-          className='w-full h-auto max-w-[45%] absolute bottom-0 left-[50%] translate-x-[-50%]'
+          className='absolute bottom-0 left-[50%] h-auto w-full max-w-[45%] translate-x-[-50%]'
         >
           <path
             d='M147.911 24.2337H51.4962C40.5325 24.2337 31.6447 31.9881 31.6447 41.5537V266.87C31.6447 276.435 40.5325 284.19 51.4962 284.19H147.911C158.875 284.19 167.762 276.435 167.762 266.87V41.5537C167.762 31.9881 158.875 24.2337 147.911 24.2337Z'
