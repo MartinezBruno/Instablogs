@@ -1,0 +1,3 @@
+.commentFooter div:has(form) + button {
+  display: none;
+}

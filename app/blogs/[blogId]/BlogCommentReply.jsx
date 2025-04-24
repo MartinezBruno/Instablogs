@@ -68,7 +68,7 @@ export const BlogCommentReply = ({ parentId, userData, blogId }) => {
   }, [showReply])
 
   return (
-    <div className='grid w-full place-items-start'>
+    <div className={`grid ${showReply ? 'w-full' : 'w-fit'} place-items-start`}>
       {showReply ? (
         <form
           ref={formRef}

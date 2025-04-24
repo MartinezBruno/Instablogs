@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import { BlogCommentReply } from './BlogCommentReply'
 import { BlogCommentDelete } from './BlogCommentDelete'
+import styles from './BlogComments.module.css'
 
 const getBlogComments = async (blogId) => {
   try {
@@ -77,7 +78,9 @@ const BlogComments = async ({ blogId }) => {
                       />
                     </blockquote>
                     {session?.user && (
-                      <div className='flex gap-2'>
+                      <div
+                        className={`${styles.commentFooter} flex w-full gap-2`}
+                      >
                         <BlogCommentReply
                           blogId={blogId}
                           parentId={comment.id}
