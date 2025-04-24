@@ -6,27 +6,30 @@ const featuredArticles = data.data
 
 const AboutUs = () => {
   return (
-    <section className='c-container flex flex-col gap-16 scroll-mt-[104px]' id='about-us'>
+    <section
+      className='c-container flex scroll-mt-[104px] flex-col gap-16'
+      id='about-us'
+    >
       {featuredArticles.map((article, index) => (
         <article
           key={index}
           className={`${
-            index % 2 ? 'flex lg:flex-row-reverse self-end' : 'flex lg:flex-row'
-          } flex-col max-w-[442px] md:max-w-[650px] lg:max-w-none lg:gap-28`}
+            index % 2 ? 'flex self-end lg:flex-row-reverse' : 'flex lg:flex-row'
+          } max-w-[442px] flex-col md:max-w-[650px] lg:max-w-none lg:gap-28`}
         >
           <img
             src={article.image}
             alt='Article cover image'
             loading='eager'
-            className='object-cover w-full md:max-w-[55%] h-full'
+            className='h-full w-full object-cover md:max-w-[55%]'
           />
           <div className='basis-full'>
             <h2
-              className={`${index % 2 && 'text-end'} text-xl lg:text-5xl font-extrabold text-yellow dark:text-purple my-3`}
+              className={`${index % 2 && 'text-end'} text-yellow dark:text-purple my-3 text-xl font-extrabold lg:text-5xl`}
             >
               {article.title}
             </h2>
-            <p className='text-black dark:text-white font-semibold text-justify leading-[140%] tracking-[-0.26px] text-sm md:text-base lg:text-xl'>
+            <p className='text-justify text-sm leading-[140%] font-semibold tracking-[-0.26px] text-black md:text-base lg:text-xl dark:text-white'>
               {article.content.substring(0, 300)}...
             </p>
             <Link
@@ -34,7 +37,7 @@ const AboutUs = () => {
               href={article.handle}
               className={`${
                 index % 2 && 'justify-end'
-              } flex text-sm font-bold leading-[175%] underline mt-5 dark:text-white`}
+              } mt-5 flex text-sm leading-[175%] font-bold underline dark:text-white`}
             >
               Learn more <Arrow />
             </Link>
