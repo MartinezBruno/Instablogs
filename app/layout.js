@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
       <body className={`h-screen ${muslish.className}`}>
         <Provider>
           <Nav />
-          <main className='grid min-h-[85svh] grid-cols-1 content-center bg-white dark:bg-[rgba(0,0,0,0.92)]'>
+          <main className='min-h-[85svh] bg-white dark:bg-[rgba(0,0,0,0.92)]'>
             {children}
           </main>
           <SpeedInsights />

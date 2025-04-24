@@ -1,11 +1,11 @@
 const Information = ({ article }) => {
   return (
-    <section className='c-container flex max-w-[442px] scroll-mt-[104px] flex-col self-end lg:flex-row lg:gap-28'>
+    <section className='c-container information flex max-w-[442px] scroll-mt-[104px] flex-col self-end lg:flex-row lg:gap-28'>
       <img
         src={article.image}
         alt='Article cover'
         loading='eager'
-        className='h-full w-full object-cover lg:max-w-[44%]'
+        className='mx-auto h-full w-full object-cover md:max-w-[70%] lg:max-w-[44%]'
       />
       <div className='basis-full'>
         <h2 className='text-yellow dark:text-purple my-3 text-xl font-extrabold lg:text-5xl'>
