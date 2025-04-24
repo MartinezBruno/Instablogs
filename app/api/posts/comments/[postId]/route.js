@@ -121,3 +121,44 @@ export const POST = async (request, { params }) => {
     return NextResponse.json({ error: error.message }, { status: 404 })
   }
 }
+
+export const DELETE = async (request, { params }) => {
+  try {
+    const { postId } = await params
+    const { commentId, userId } = await request.json()
+
+    const comment = await prisma.comment.findUnique({
+      where: {
+        id: commentId
+      }
+    })
+    const replies = await prisma.comment.findMany({
+      where: {
+        parentId: commentId
+      }
+    })
+
+    if (!comment)
+      return NextResponse.json({ error: 'Comment not found' }, { status: 404 })
+
+    const deletedComment = await prisma.$transaction(async (prisma) => {
+      if (replies.length > 0)
+        await prisma.comment.deleteMany({
+          where: {
+            parentId: commentId
+          }
+        })
+
+      await prisma.comment.delete({
+        where: {
+          id: commentId
+        }
+      })
+    })
+
+    return NextResponse.json({ message: 'Comment deleted successfully' })
+  } catch (error) {
+    console.error(error.message)
+    return NextResponse.json({ error: error.message }, { status: 404 })
+  }
+}

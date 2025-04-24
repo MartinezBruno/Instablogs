@@ -32,10 +32,7 @@ html::-webkit-scrollbar-track {
 
 html::-webkit-scrollbar-thumb {
   border-radius: 8px;
-  background-color: #efb208;
-}
-html.dark::-webkit-scrollbar-thumb {
-  background-color: #9747ff;
+  background-color: slategray;
 }
 
 .fill_available {
@@ -49,7 +46,7 @@ input {
 }
 
 .dark input {
-  @apply text-white border-white bg-black;
+  @apply border-white bg-black text-white;
 }
 
 textarea {
