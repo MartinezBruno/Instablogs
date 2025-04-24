@@ -26,13 +26,17 @@ const customerServiceLinks = [
     link: '/privacy-policy'
   }
 ]
-const contactUsData = ['info@instablogs.com', '1-800-200-300', '1010 Sunset Blv. Palo Alto, CA United States']
+const contactUsData = [
+  'info@instablogs.com',
+  '1-800-200-300',
+  'Canelones, Uruguay'
+]
 
 const Footer = () => {
   return (
     <footer className='bg-yellow dark:bg-purple'>
-      <div className='flex flex-col flex-wrap gap-6 c-container lg:flex-row'>
-        <div className={`pb-12 gap-4 ${styles.column_container}`}>
+      <div className='c-container flex flex-col flex-wrap gap-6 lg:flex-row'>
+        <div className={`gap-4 pb-12 ${styles.column_container}`}>
           <Link href='/' title='Instablogs' className='basis-[20%]'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -40,7 +44,7 @@ const Footer = () => {
               height='100'
               viewBox='0 0 189 338'
               fill='none'
-              className='w-[25px] h-[52px] md:w-[50px] md:h-[104px]'
+              className='h-[52px] w-[25px] md:h-[104px] md:w-[50px]'
             >
               <path
                 d='M150 24.576H52.2235C41.105 24.576 32.0917 32.4399 32.0917 42.1406V270.638C32.0917 280.339 41.105 288.203 52.2235 288.203H150C161.118 288.203 170.132 280.339 170.132 270.638V42.1406C170.132 32.4399 161.118 24.576 150 24.576Z'
@@ -58,10 +62,10 @@ const Footer = () => {
               />
             </svg>
           </Link>
-          <div className='flex flex-col w-fit'>
+          <div className='flex w-fit flex-col'>
             <h4 className={styles.column_header}>Company</h4>
             <ul>
-              {companyLinks.map(link => (
+              {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.link} className={styles.column_link}>
                     {link.name}
@@ -70,7 +74,7 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className='flex flex-col w-fit'>
+          <div className='flex w-fit flex-col'>
             <h4 className={styles.column_header}>Contact Us</h4>
             <ul>
               {contactUsData.map((data, index) => (
@@ -80,10 +84,10 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          <div className='flex flex-col w-fit'>
+          <div className='flex w-fit flex-col'>
             <h4 className={styles.column_header}>Customer Service</h4>
             <ul>
-              {customerServiceLinks.map(link => (
+              {customerServiceLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.link} className={styles.column_link}>
                     {link.name}
@@ -95,17 +99,19 @@ const Footer = () => {
           <div className='sm:col-span-full sm:max-w-[40%] md:col-span-1 md:max-w-none'>
             <h4 className={styles.column_header}>Stay up to date</h4>
             <form className='flex flex-col'>
-              <label className={styles.column_link}>Subscribe to our newsletter</label>
+              <label className={styles.column_link}>
+                Subscribe to our newsletter
+              </label>
               <input
                 type='email'
-                className='py-[6.5px] px-2 border-[2px] border-yellow rounded placeholder:text-yellow dark:placeholder:text-white dark:!border-purple focus:outline-none focus:border-blue'
+                className='border-yellow placeholder:text-yellow dark:!border-purple focus:border-blue rounded border-[2px] px-2 py-[6.5px] focus:outline-none dark:placeholder:text-white'
                 placeholder='Email'
               />
             </form>
           </div>
         </div>
-        <div className='flex items-center justify-between w-full'>
-          <span className='text-white text-sm leading-4 flex-[1_0_50%]'>
+        <div className='flex w-full items-center justify-between'>
+          <span className='flex-[1_0_50%] text-sm leading-4 text-white'>
             Designed and Developed by Martina and Bruno with a lot of ☕ and ❤️
           </span>
           <ThemeToggle />
