@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Hero = () => {
   return (
     <section className='relative min-h-[687px] pt-16'>
-      <div className='bg-[rgba(11,8,2,0.33)] absolute inset-0 z-0'>
+      <div className='absolute inset-0 z-0 bg-[rgba(11,8,2,0.33)]'>
         <Image
           src='https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/Banner-min.png?alt=media&token=addb78a5-1622-462a-96d8-bf08ed5ee7c2'
           alt='Hero image'
@@ -11,26 +11,28 @@ const Hero = () => {
           loading='eager'
           width={1920}
           height={1080}
-          className='object-cover object-[top_0_right_-400px] md:object-[top_center] w-full h-full relative -z-20 dark:z-0'
+          className='relative -z-20 h-full w-full object-cover object-[top_0_right_-400px] md:object-[top_center] dark:z-0'
         />
       </div>
-      <div className='relative c-container'>
-        <div className='flex flex-col gap-8 max-w-[515px] mx-auto md:mx-0 mt-28'>
-          <h1 className='heading1 !text-white break-words'>Instant collaboration for remote teams</h1>
+      <div className='c-container relative'>
+        <div className='mx-auto mt-28 flex max-w-[515px] flex-col gap-8 md:mx-0'>
+          <h1 className='heading1 break-words !text-white'>
+            Instant collaboration for remote teams
+          </h1>
           <p className='paragraph !text-white'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+            Join the InstaBlogs web, we would like to share information,
+            contacts and experiences with you. Became part of our community of
+            freelancers right now!
           </p>
-          <form className='flex flex-col gap-6 mt-12 md:flex-row'>
+          <form className='mt-12 flex flex-col gap-6 md:flex-row'>
             <input
               type='email'
               placeholder='Email'
-              className='py-[13px] px-4 border-[2px] border-[rgba(11,8,2,0.33)] rounded placeholder:text-black focus:outline-none focus:border-blue bg-white dark:placeholder:text-white'
+              className='focus:border-blue rounded border-[2px] border-[rgba(11,8,2,0.33)] bg-white px-4 py-[13px] placeholder:text-black focus:outline-none dark:placeholder:text-white'
             />
             <button
               type='submit'
-              className='text-white text-base font-bold leading-[150%] bg-yellow dark:bg-purple rounded px-6 py-3 hover:bg-yellow/90 hover:dark:bg-purple/90 transition-colors ease-in-out'
+              className='bg-yellow dark:bg-purple hover:bg-yellow/90 hover:dark:bg-purple/90 rounded px-6 py-3 text-base leading-[150%] font-bold text-white transition-colors ease-in-out'
             >
               Get early access
             </button>
