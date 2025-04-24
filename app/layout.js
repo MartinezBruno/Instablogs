@@ -31,7 +31,8 @@ export const metadata = {
     'InstaBlogs is a platform for sharing your thoughts and ideas with the world. It is a place where you can share your knowledge and experience with others.'
 }
 
-if (process.env.NODE_ENV !== 'production') axios.defaults.baseURL = `${BASE_URL}/api`
+if (process.env.NODE_ENV !== 'production')
+  axios.defaults.baseURL = `${BASE_URL}/api`
 else axios.defaults.baseURL = 'http://localhost:3000/api'
 
 export default function RootLayout({ children }) {
@@ -40,7 +41,7 @@ export default function RootLayout({ children }) {
       <body className={`h-screen ${muslish.className}`}>
         <Provider>
           <Nav />
-          <main className='grid min-h-[85svh] content-center bg-white dark:bg-[rgba(0,0,0,0.92)]'>
+          <main className='grid min-h-[85svh] grid-cols-1 content-center bg-white dark:bg-[rgba(0,0,0,0.92)]'>
             {children}
           </main>
           <SpeedInsights />
