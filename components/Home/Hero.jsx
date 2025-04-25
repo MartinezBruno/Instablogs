@@ -11,7 +11,7 @@ const Hero = () => {
           loading='eager'
           width={1920}
           height={1080}
-          className='relative -z-20 h-full w-full object-cover object-[top_0_right_-400px] md:object-[top_center] dark:z-0'
+          className='relative -z-20 h-full w-full object-cover object-[top_0_left_-700px] sm:object-[top_0_left_-330px] md:object-[top_center] dark:z-0'
         />
       </div>
       <div className='c-container relative'>
