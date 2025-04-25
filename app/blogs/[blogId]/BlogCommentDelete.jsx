@@ -31,7 +31,7 @@ export const BlogCommentDelete = ({ blogId, commentId, userData }) => {
     <button
       onClick={handleDelete}
       disabled={isDeleting}
-      className='font-mulish text-sm leading-[150%] dark:text-white'
+      className='font-mulish cursor-pointer text-sm leading-[150%] dark:text-white'
     >
       {isDeleting ? 'Deleting...' : 'Delete'}
     </button>

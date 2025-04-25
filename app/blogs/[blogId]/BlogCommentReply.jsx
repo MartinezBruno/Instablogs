@@ -107,7 +107,7 @@ export const BlogCommentReply = ({ parentId, userData, blogId }) => {
       ) : (
         <button
           onClick={() => setShowReply(true)}
-          className='font-mulish text-sm leading-[150%] dark:text-white'
+          className='font-mulish cursor-pointer text-sm leading-[150%] dark:text-white'
         >
           Reply
         </button>
