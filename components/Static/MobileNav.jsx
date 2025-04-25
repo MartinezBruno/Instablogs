@@ -10,7 +10,7 @@ const MobileNav = ({
   return (
     <div
       id='mobile-nav'
-      className={`${isActive ? 'z-10 translate-x-0 bg-white !duration-500 dark:bg-[#000]' : '-translate-x-96'} absolute top-0 left-0 h-[100svh] w-fit p-8 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out`}
+      className={`${isActive ? 'z-10 translate-x-0 bg-white !duration-500 dark:bg-[#000]' : '-translate-x-96'} absolute top-0 left-0 h-[100dvh] w-fit p-8 shadow-2xl shadow-black transition-all duration-[1.55s] ease-in-out`}
     >
       <Close handleClose={handleClose} />
       <div className='relative mt-5 flex w-full flex-col gap-3 px-4'>
