@@ -27,6 +27,9 @@ const HorizontalDots = ({ blogId }) => {
           icon: 'success',
           text: 'Keep in mind that this action might take a few minutes',
           timer: 5000,
+          showCloseButton: false,
+          showCancelButton: false,
+          showConfirmButton: false,
           timerProgressBar: true
         }).then(() => {
           window.location.reload()

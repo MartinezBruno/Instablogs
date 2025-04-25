@@ -176,9 +176,7 @@ const CreateBlogForm = ({ user }) => {
             Recommended size: 1920x1080px (16:9) - Max weight: 10MB
           </span>
           {errors.banner && (
-            <span className='block text-sm text-red-500'>
-              Your image should not weight more than 10MB
-            </span>
+            <span className='block text-sm text-red-500'>{errors.banner}</span>
           )}
         </div>
         <div>
