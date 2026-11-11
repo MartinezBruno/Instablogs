@@ -1,13 +1,13 @@
 {
   "data": [
     {
-      "image": "https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/About%20us-min.png?alt=media&token=9abc8535-8f38-43b3-9082-524be330b4a9",
+      "image": "/images/about-us.png",
       "title": "About us",
       "handle": "about-us",
       "content": "In InstaBlogs you can see experiences about other freelancers and also, you can share your own experience as a independent freelancer or for a company. Also, you can find tips, opinions, projects, tools, all this and more in our blog. Our objetive is create a community and a site where all independent professionals are welcome and exchange and share experiencies, so be polite :)"
     },
     {
-      "image": "https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/Team%20meets-min.png?alt=media&token=52c22092-0e3e-4cff-8749-add98ac8c39e",
+      "image": "/images/team-meets.png",
       "title": "Team meets",
       "handle": "opinions",
       "content": "Perhaps on this site you will find future coworkers, or even workplaces with opportunities for you if you want to start in a company or change it! The function of InstaBlogs is also to form experiences between you, projects, teams, and contacts that can benefit you even more professionally."

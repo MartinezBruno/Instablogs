@@ -1,6 +1,6 @@
 import prisma from '@/lib/prismadb'
 import { NextResponse } from 'next/server'
-import { uploadImageAndGetURL } from '@/app/services/firebase.config'
+import { uploadImageAndGetURL } from '@/app/services/storage'
 import sharp from 'sharp'
 import { v4 as uuidv4 } from 'uuid'
 

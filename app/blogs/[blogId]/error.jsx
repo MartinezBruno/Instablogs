@@ -10,7 +10,7 @@ const error = () => {
         Feel free to try again but we can&apos;t promise anything.
       </p>
       <img
-        src='https://firebasestorage.googleapis.com/v0/b/instablogs-82a89.appspot.com/o/5516eb2fe1d9f10587651550f5724757.jpeg?alt=media&token=4fa7f4d9-e4f8-4259-b752-fc73022c4f5a'
+        src='/images/not-found.jpg'
         width={500}
         height={'auto'}
         alt='404'
